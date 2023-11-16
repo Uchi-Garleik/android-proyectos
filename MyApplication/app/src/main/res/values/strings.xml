@@ -4,4 +4,9 @@
     <string name="welcome_message">
         ¡Buenos Días!
     </string>
+
+    <string name="select">Select Item</string>
+
+
+
 </resources>
