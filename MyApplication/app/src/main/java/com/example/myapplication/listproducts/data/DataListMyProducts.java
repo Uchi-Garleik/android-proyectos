@@ -4,7 +4,7 @@ import com.example.myapplication.beans.Producto;
 
 import java.util.ArrayList;
 
-public class DataListProducts {
+public class DataListMyProducts {
     private String message;
     private ArrayList<Producto> productsList;
 

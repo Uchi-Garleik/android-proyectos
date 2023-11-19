@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.addproducts.view.AddProductActivity;
 import com.example.myapplication.beans.Usuario;
+import com.example.myapplication.listproducts.view.ListMyProductsActivity;
 import com.example.myapplication.loginuser.ContractLoginUser;
 import com.example.myapplication.loginuser.presenter.LoginUserPresenter;
 
@@ -22,8 +23,9 @@ public class LoginUserActivity extends AppCompatActivity implements ContractLogi
     SharedPreferences sharedPreferencesUserCFG;
 
     Button buttonLogout;
-
     Button buttonLogin;
+    Button buttonListProducts;
+
     EditText username;
     EditText password;
 
@@ -49,9 +51,19 @@ public class LoginUserActivity extends AppCompatActivity implements ContractLogi
         sharedPreferencesUserCFG = getSharedPreferences("com.MyApp.USER_CFG", Context.MODE_PRIVATE);
         buttonLogin = findViewById(R.id.loginBtn2);
         buttonLogout = findViewById(R.id.logoutBtn);
+        buttonListProducts = findViewById(R.id.listadoProductosBtn);
 
         username = findViewById(R.id.editTextUsername);
         password = findViewById(R.id.editTextPassword);
+
+        buttonListProducts.setOnClickListener(view -> {
+            if (!isLoggedIn()){
+                Toast.makeText(this, "Please Log In", Toast.LENGTH_SHORT).show();
+            }else{
+                Intent intent = new Intent(this, ListMyProductsActivity.class);
+                startActivity(intent);
+            }
+        });
 
         buttonLogout.setOnClickListener(view -> {
             SharedPreferences.Editor editor = sharedPreferencesUserCFG.edit();
@@ -75,6 +87,8 @@ public class LoginUserActivity extends AppCompatActivity implements ContractLogi
                 userData += "Id: " + sharedPreferencesUserCFG.getInt("id",0) + "}";
                 Toast.makeText(this, userData, Toast.LENGTH_SHORT).show();
                 Log.e("success", "isLoggedIn returned true");
+                Intent intent = new Intent(this, AddProductActivity.class);
+                startActivity(intent);
             }
         });
     }

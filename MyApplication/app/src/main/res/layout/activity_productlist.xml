@@ -44,43 +44,30 @@
         <LinearLayout
             android:id="@+id/columnLeft"
             android:layout_width="160dp"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_weight="2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
-            <LinearLayout
-                android:id="@+id/linearLayout2"
-                android:layout_width="160dp"
-                android:layout_height="160dp"
-                android:background="@color/colorGreen"
-                android:gravity="bottom"
-                android:orientation="vertical"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout">
-
-                <TextView
-                    android:id="@+id/textView4"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:background="@color/colorBlue"
-                    android:gravity="center_vertical"
-                    android:text="TextView" />
-            </LinearLayout>
+            <!-- PROGRAMMATICALLY GENERATED CONTENT -->
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/columnRight"
             android:layout_width="160dp"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_weight="2"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout"></LinearLayout>
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+            <!-- PROGRAMMATICALLY GENERATED CONTENT -->
+
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

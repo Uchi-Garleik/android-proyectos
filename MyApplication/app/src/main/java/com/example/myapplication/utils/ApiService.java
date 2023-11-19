@@ -1,7 +1,7 @@
 package com.example.myapplication.utils;
 
 import com.example.myapplication.addproducts.data.DataProducts;
-import com.example.myapplication.listproducts.data.DataListProducts;
+import com.example.myapplication.listproducts.data.DataListMyProducts;
 import com.example.myapplication.loginuser.data.DataUsers;
 
 import retrofit2.Call;
@@ -29,10 +29,13 @@ public interface ApiService {
                                          @Query("idUser") int idUser
                                          );
     @GET("MyServlet")
-    Call<DataListProducts> getDataListProducts(@Query("ACTION") String action);
+    Call<DataListMyProducts> getDataListProducts(@Query("ACTION") String action);
 
     @GET("MyServlet")
-    Call<DataListProducts> getDataListProducts(@Query("ACTION") String action, @Query("nombre") String nombre);
+    Call<DataListMyProducts> getDataListProducts(@Query("ACTION") String action, @Query("nombre") String nombre);
+
+    @GET("MyServlet")
+    Call<DataListMyProducts> getDataListProducts(@Query("ACTION") String action, @Query("idUser") int idUser);
 
 
     @GET("MyServlet")
