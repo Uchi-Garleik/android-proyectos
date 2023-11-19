@@ -1,6 +1,7 @@
 package com.example.myapplication.utils;
 
 import com.example.myapplication.addproducts.data.DataProducts;
+import com.example.myapplication.listUsers.data.DataListUsers;
 import com.example.myapplication.listproducts.data.DataListMyProducts;
 import com.example.myapplication.loginuser.data.DataUsers;
 
@@ -37,6 +38,8 @@ public interface ApiService {
     @GET("MyServlet")
     Call<DataListMyProducts> getDataListProducts(@Query("ACTION") String action, @Query("idUser") int idUser);
 
+    @GET("MyServlet")
+    Call<DataListUsers> getDataListUsers(@Query("ACTION") String action);
 
     @GET("MyServlet")
     Call<DataUsers> getDataLoginUser(@Query("ACTION") String action, @Query("username") String username, @Query("password") String password);
