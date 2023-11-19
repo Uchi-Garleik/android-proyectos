@@ -12,6 +12,8 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.myapplication.loginuser.view.LoginUserActivity;
+
 public class MainActivity extends AppCompatActivity {
 
     private Boolean isViewVisible;
@@ -30,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void goToLogin(Button loginBtn){
-        Intent intent = new Intent(this, LoginActivity.class);
+        Intent intent = new Intent(this, LoginUserActivity.class);
         startActivity(intent);
     }
 
