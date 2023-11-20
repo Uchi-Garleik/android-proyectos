@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.addproducts.view.AddProductActivity;
 import com.example.myapplication.beans.Usuario;
+import com.example.myapplication.listUsers.view.ListUsersActivity;
 import com.example.myapplication.listproducts.view.ListMyProductsActivity;
 import com.example.myapplication.loginuser.ContractLoginUser;
 import com.example.myapplication.loginuser.presenter.LoginUserPresenter;
@@ -25,6 +26,7 @@ public class LoginUserActivity extends AppCompatActivity implements ContractLogi
     Button buttonLogout;
     Button buttonLogin;
     Button buttonListProducts;
+    Button buttonMostSells;
 
     EditText username;
     EditText password;
@@ -52,9 +54,15 @@ public class LoginUserActivity extends AppCompatActivity implements ContractLogi
         buttonLogin = findViewById(R.id.loginBtn2);
         buttonLogout = findViewById(R.id.logoutBtn);
         buttonListProducts = findViewById(R.id.listadoProductosBtn);
+        buttonMostSells = findViewById(R.id.mostSellsBtn);
 
         username = findViewById(R.id.editTextUsername);
         password = findViewById(R.id.editTextPassword);
+
+        buttonMostSells.setOnClickListener(v -> {
+            Intent intent = new Intent(this, ListUsersActivity.class);
+            startActivity(intent);
+        });
 
         buttonListProducts.setOnClickListener(view -> {
             if (!isLoggedIn()){

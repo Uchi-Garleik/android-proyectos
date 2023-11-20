@@ -24,7 +24,7 @@ public class ListMyProductsModel extends AppCompatActivity implements ContractLi
     private SharedPreferences sharedPreferencesUserCFG;
     private Context context;
 
-    private static final String IP_BASE = "192.168.1.196:8080";
+    private static final String IP_BASE = "192.168.104.75:8080";
     private ListMyMyProductsPresenter presenter;
 
 //    public ListProductsModel(Context context){
@@ -41,6 +41,7 @@ public class ListMyProductsModel extends AppCompatActivity implements ContractLi
         ApiService apiService = RetrofitCliente.getClient("http://" + IP_BASE + "/untitled/").create(ApiService.class);
         sharedPreferencesUserCFG = context.getSharedPreferences("com.MyApp.USER_CFG", Context.MODE_PRIVATE);
         Call<DataListMyProducts> call;
+
         if (sharedPreferencesUserCFG.getInt("id",0) == 0){
              call = apiService.getDataListProducts("PRODUCT.FILTER");
         }else{
