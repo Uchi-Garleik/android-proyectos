@@ -42,6 +42,9 @@ public interface ApiService {
     Call<DataListUsers> getDataListUsers(@Query("ACTION") String action);
 
     @GET("MyServlet")
+    Call<DataListUsers> getDataListUsers(@Query("ACTION") String action, @Query("FILTER") String filter);
+
+    @GET("MyServlet")
     Call<DataUsers> getDataLoginUser(@Query("ACTION") String action, @Query("username") String username, @Query("password") String password);
 
 

@@ -1,8 +1,6 @@
 package com.example.myapplication.listUsers;
 
-import com.example.myapplication.beans.Producto;
 import com.example.myapplication.beans.Usuario;
-import com.example.myapplication.listproducts.ContractListMyProducts;
 
 import java.util.ArrayList;
 
@@ -24,7 +22,7 @@ public interface ContractListUsers {
     }
     public interface View{
         public void successListUsers(ArrayList<Usuario> usersList);
-        void failureMovies(String err);
+        void failureListUsers(String err);
     }
 
 }

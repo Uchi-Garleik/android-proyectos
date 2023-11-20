@@ -40,7 +40,7 @@ public class ListMyProductsActivity extends AppCompatActivity implements Contrac
     }
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_productlist);
         listMyProductsActivity = this;
@@ -94,17 +94,17 @@ public class ListMyProductsActivity extends AppCompatActivity implements Contrac
             TextView textView = new TextView(this);
             textView.setId(View.generateViewId());
             textView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, dpToPx(40)));
-            textView.setBackgroundColor(ContextCompat.getColor(this, R.color.colorBlue));
+            textView.setBackgroundColor(ContextCompat.getColor(this, R.color.colorGreen));
             textView.setGravity(Gravity.CENTER_VERTICAL);
+            textView.setTextColor(ContextCompat.getColor(this, R.color.white));
             textView.setText(producto.getNombre());
-
             linearLayout.addView(textView);
             parentElement.addView(linearLayout);
         }
     }
 
     @Override
-    public void failureMovies(String err) {
+    public void failureListMyProducts(String err) {
 
     }
 }

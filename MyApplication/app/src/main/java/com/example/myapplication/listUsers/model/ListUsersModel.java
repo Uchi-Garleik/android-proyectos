@@ -22,7 +22,8 @@ import retrofit2.Response;
 
 public class ListUsersModel implements ContractListUsers.Model {
 
-    private static final String IP_BASE = "192.168.104.75:8080";
+    // private static final String IP_BASE = "192.168.104.75:8080";
+    private static final String IP_BASE = "192.168.1.196:8080";
     private ListUsersPresenter presenter;
 
 //    public ListProductsModel(Context context){
@@ -38,7 +39,7 @@ public class ListUsersModel implements ContractListUsers.Model {
         ApiService apiService = RetrofitCliente.getClient("http://" + IP_BASE + "/untitled/").create(ApiService.class);
 
         Call<DataListUsers> call;
-        call = apiService.getDataListUsers("USERS.FILTER");
+        call = apiService.getDataListUsers("USER.FILTER", "HighestSells");
         call.enqueue(new Callback<DataListUsers>() {
             @Override
             public void onResponse(Call<DataListUsers> call, Response<DataListUsers> response) {

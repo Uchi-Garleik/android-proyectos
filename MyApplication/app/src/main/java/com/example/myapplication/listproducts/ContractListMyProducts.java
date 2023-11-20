@@ -22,7 +22,7 @@ public interface ContractListMyProducts {
     }
     public interface View{
         public void successListMyProducts(ArrayList<Producto> productsList);
-        void failureMovies(String err);
+        void failureListMyProducts(String err);
     }
     
 }
