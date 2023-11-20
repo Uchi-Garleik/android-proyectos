@@ -60,9 +60,10 @@
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
             <Button
-                android:id="@+id/button2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/addImageBtn"
+                android:layout_width="180dp"
+                android:layout_height="90dp"
+                android:background="@color/bg_200"
                 android:text="Button"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -75,7 +76,7 @@
                 android:background="?android:attr/listDivider"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/button2" />
+                app:layout_constraintTop_toBottomOf="@+id/addImageBtn" />
 
             <TextView
                 android:id="@+id/textView3"

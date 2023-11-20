@@ -3,12 +3,16 @@ package com.example.myapplication.addproducts.view;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,7 +53,7 @@ public class AddProductActivity extends AppCompatActivity implements ContractAdd
     AutoCompleteTextView moneda;
     Button addProductBtn;
     Button backButton;
-
+    Button addImageButton;
 
 
     private AddProductPresenter presenter = new AddProductPresenter(this);
@@ -68,6 +72,32 @@ public class AddProductActivity extends AppCompatActivity implements ContractAdd
     }
 
     private void initComponents() {
+        addImageButton = findViewById(R.id.addImageBtn);
+        addImageButton.setOnClickListener(view -> {
+            String[] projection = new String[] {
+                    "media-database-columns-to-retrieve"
+            };
+            String selection = "sql-where-clause-with-placeholder-variables";
+            String[] selectionArgs = new String[] {
+                    "values-of-placeholder-variables"
+            };
+            String sortOrder = "sql-order-by-clause";
+
+            Cursor cursor = getApplicationContext().getContentResolver().query(
+                    MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                    projection,
+                    selection,
+                    selectionArgs,
+                    sortOrder
+            );
+
+            while (cursor.moveToNext()) {
+                // Use an ID column from the projection to get
+                // a URI representing the media item itself.
+            }
+
+        });
+
         sharedPreferencesUserCFG = getSharedPreferences("com.MyApp.USER_CFG", Context.MODE_PRIVATE);
 
         pageTitle = findViewById(R.id.pageTitle);
