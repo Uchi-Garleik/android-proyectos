@@ -3,19 +3,25 @@ package com.example.myapplication.addproducts.view;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import androidx.activity.result.contract.ActivityResultContracts.PickVisualMedia;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.PickVisualMediaRequest;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -27,11 +33,15 @@ import com.example.myapplication.loginuser.view.LoginUserActivity;
 
 public class AddProductActivity extends AppCompatActivity implements ContractAddProducts.View {
 
+    private ActivityResultLauncher<PickVisualMediaRequest> pickMediaLauncher;
+
     TextView pageTitle;
 
     String[] categories = {"Zapatillas", "Pantalones", "Chaqueta", "Abrigos"};
     String[] currencies = {"EUR", "USD", "GBP", "RSD", "RUB"};
     String[] estados = {"Nuevo", "Usado"};
+
+    ImageButton addImageBtn;
 
     AutoCompleteTextView categoryAutoCompleteTxtView;
     AutoCompleteTextView estadoAutoCompleteTxtView;
@@ -53,7 +63,6 @@ public class AddProductActivity extends AppCompatActivity implements ContractAdd
     AutoCompleteTextView moneda;
     Button addProductBtn;
     Button backButton;
-    Button addImageButton;
 
 
     private AddProductPresenter presenter = new AddProductPresenter(this);
@@ -64,39 +73,39 @@ public class AddProductActivity extends AppCompatActivity implements ContractAdd
     }
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listitem);
+        addImageBtn = findViewById(R.id.addImageBtn);
+
+        pickMediaLauncher = registerForActivityResult(new PickVisualMedia(), uri -> {
+            // Callback is invoked after the user selects a media item or closes the
+            // photo picker.
+            if (uri != null) {
+                Log.d("PhotoPicker", "Selected URI: " + uri);
+            } else {
+                Log.d("PhotoPicker", "No media selected");
+            }
+        });
+
+
+        addImageBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Launch the photo picker activity here
+                pickMediaLauncher.launch(new PickVisualMediaRequest.Builder()
+                        .setMediaType(PickVisualMedia.ImageAndVideo.INSTANCE)
+                        .build());
+            }
+        });
+
+
         addProductActivity = this;
         initComponents();
     }
 
+
     private void initComponents() {
-        addImageButton = findViewById(R.id.addImageBtn);
-        addImageButton.setOnClickListener(view -> {
-            String[] projection = new String[] {
-                    "media-database-columns-to-retrieve"
-            };
-            String selection = "sql-where-clause-with-placeholder-variables";
-            String[] selectionArgs = new String[] {
-                    "values-of-placeholder-variables"
-            };
-            String sortOrder = "sql-order-by-clause";
-
-            Cursor cursor = getApplicationContext().getContentResolver().query(
-                    MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-                    projection,
-                    selection,
-                    selectionArgs,
-                    sortOrder
-            );
-
-            while (cursor.moveToNext()) {
-                // Use an ID column from the projection to get
-                // a URI representing the media item itself.
-            }
-
-        });
 
         sharedPreferencesUserCFG = getSharedPreferences("com.MyApp.USER_CFG", Context.MODE_PRIVATE);
 
