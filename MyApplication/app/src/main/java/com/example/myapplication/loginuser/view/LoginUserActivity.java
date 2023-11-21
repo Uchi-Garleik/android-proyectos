@@ -88,13 +88,11 @@ public class LoginUserActivity extends AppCompatActivity implements ContractLogi
                 usuario.setPassword(password.getText().toString());
                 Toast.makeText(this, "wtf", Toast.LENGTH_SHORT).show();
                 presenter.loginUser(usuario);
-                Log.e("logged success", "logged finished");
             }else{
                 String userData = "";
                 userData += "{Username: " + sharedPreferencesUserCFG.getString("username", "cuke") + "},";
                 userData += "Id: " + sharedPreferencesUserCFG.getInt("id",0) + "}";
                 Toast.makeText(this, userData, Toast.LENGTH_SHORT).show();
-                Log.e("success", "isLoggedIn returned true");
                 Intent intent = new Intent(this, AddProductActivity.class);
                 startActivity(intent);
             }
@@ -109,14 +107,12 @@ public class LoginUserActivity extends AppCompatActivity implements ContractLogi
         editor.putString("username", usuario.getUsername());
         editor.putInt("id", usuario.getId());
         editor.apply();
-        Log.e("success", "editor finished");
         Intent intent = new Intent(this, AddProductActivity.class);
         startActivity(intent);
     }
 
     @Override
     public void failureMovies(String err) {
-        Log.e("wtf", "wtff");
         Toast.makeText(this, err, Toast.LENGTH_SHORT).show();
     }
 }

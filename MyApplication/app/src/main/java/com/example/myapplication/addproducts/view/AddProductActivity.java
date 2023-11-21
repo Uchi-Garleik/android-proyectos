@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import androidx.activity.result.contract.ActivityResultContracts.PickVisualMedia;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -31,6 +33,10 @@ import com.example.myapplication.addproducts.presenter.AddProductPresenter;
 import com.example.myapplication.beans.Producto;
 import com.example.myapplication.loginuser.view.LoginUserActivity;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+
 public class AddProductActivity extends AppCompatActivity implements ContractAddProducts.View {
 
     private ActivityResultLauncher<PickVisualMediaRequest> pickMediaLauncher;
@@ -41,7 +47,9 @@ public class AddProductActivity extends AppCompatActivity implements ContractAdd
     String[] currencies = {"EUR", "USD", "GBP", "RSD", "RUB"};
     String[] estados = {"Nuevo", "Usado"};
 
-    ImageButton addImageBtn;
+    Uri imgUri;
+    ImageView addImageBtn;
+    Bitmap selectedImage;
 
     AutoCompleteTextView categoryAutoCompleteTxtView;
     AutoCompleteTextView estadoAutoCompleteTxtView;
@@ -82,7 +90,10 @@ public class AddProductActivity extends AppCompatActivity implements ContractAdd
             // Callback is invoked after the user selects a media item or closes the
             // photo picker.
             if (uri != null) {
-                Log.d("PhotoPicker", "Selected URI: " + uri);
+                imgUri = uri;
+                Log.d("PhotoPicker", "Selected URI: " + imgUri);
+                addImageBtn.setImageURI(imgUri);
+
             } else {
                 Log.d("PhotoPicker", "No media selected");
             }
@@ -93,6 +104,8 @@ public class AddProductActivity extends AppCompatActivity implements ContractAdd
             @Override
             public void onClick(View v) {
                 // Launch the photo picker activity here
+                // Literally just ignore the error this gives.
+                // # It just works #
                 pickMediaLauncher.launch(new PickVisualMediaRequest.Builder()
                         .setMediaType(PickVisualMedia.ImageAndVideo.INSTANCE)
                         .build());
@@ -155,8 +168,20 @@ public class AddProductActivity extends AppCompatActivity implements ContractAdd
             producto.setPrecio(Double.parseDouble(precio.getText().toString()));
             producto.setMoneda(moneda.getText().toString());
             Toast.makeText(this, producto.toString(), Toast.LENGTH_SHORT).show();
+
+            try {
+                InputStream imageStream = getContentResolver().openInputStream(imgUri);
+                selectedImage = BitmapFactory.decodeStream(imageStream);
+                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                selectedImage.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+                byte[] imageBytes = byteArrayOutputStream.toByteArray();
+                producto.setImage(imageBytes);
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+
+
             presenter.addProduct(producto);
-            Log.e("Producto To String:",producto.toString());
         });
 
 

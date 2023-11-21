@@ -24,24 +24,21 @@ import retrofit2.Response;
 
 public class LoginUserModel implements ContractLoginUser.Model {
 
-    //    private static final String IP_BASE = "192.168.1.196:8080";
-    private static final String IP_BASE = "192.168.104.75:8080";
+    private static final String IP_BASE = "192.168.1.196:8080";
+    //private static final String IP_BASE = "192.168.104.75:8080";
     private LoginUserPresenter presenter;
     public LoginUserModel(LoginUserPresenter presenter){this.presenter = presenter;}
 
     @Override
     public void loginUserApi(Usuario usuario, OnLoginUserListener onLoginUserListener) {
         ApiService apiService = RetrofitCliente.getClient("http://" + IP_BASE + "/untitled/").create(ApiService.class);
-        Log.d("USUARIO LISTO PARA LOGEAR:", usuario.toString());
 
         Call<DataUsers> call = apiService.getDataLoginUser("USER.LOGIN", usuario.getUsername(), usuario.getPassword());
         call.enqueue(new Callback<DataUsers>() {
             @Override
             public void onResponse(Call<DataUsers> call, Response<DataUsers> response) {
-                Log.e("e","E" + response.body());
                 if (response.isSuccessful()){
                     DataUsers dataUsers = response.body();
-                    Log.e("e","E" + dataUsers);
                     ArrayList<Usuario> usersList = dataUsers.getUsersList();
                     try {
                         onLoginUserListener.onFinished(usersList.get(0));

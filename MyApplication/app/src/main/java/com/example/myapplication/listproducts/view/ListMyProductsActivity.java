@@ -3,11 +3,14 @@ package com.example.myapplication.listproducts.view;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -21,6 +24,8 @@ import com.example.myapplication.beans.Producto;
 import com.example.myapplication.listproducts.ContractListMyProducts;
 import com.example.myapplication.listproducts.presenter.ListMyMyProductsPresenter;
 import com.example.myapplication.loginuser.view.LoginUserActivity;
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 
 import java.util.ArrayList;
 
@@ -49,7 +54,6 @@ public class ListMyProductsActivity extends AppCompatActivity implements Contrac
 
     private void initComponents() {
         SharedPreferences sharedPreferences = getSharedPreferences("com.MyApp.USER_CFG", Context.MODE_PRIVATE);
-        Log.e("user_id","hello");
         Producto producto = new Producto();
         presenter.listMyProducts(producto);
         backButton = findViewById(R.id.backButton);
@@ -72,15 +76,12 @@ public class ListMyProductsActivity extends AppCompatActivity implements Contrac
         int counter = 0;
 
         for (Producto producto : productsList) {
-            Log.e("user_prod_id", "id:" + producto.getIdUser());
             if (counter == 0){
                 parentElement = columnLeft;
-                Log.i("Counter", "hhello");
                 counter = 1;
             }else{
                 parentElement = columnRight;
                 counter = 0;
-                Log.i("Counter", "hi");
             }
 
             LinearLayout linearLayout = new LinearLayout(this);
@@ -88,9 +89,16 @@ public class ListMyProductsActivity extends AppCompatActivity implements Contrac
             layoutParams.setMargins(0,dpToPx(5),0,0);
             linearLayout.setLayoutParams(layoutParams);
             linearLayout.setId(View.generateViewId());
-            linearLayout.setGravity(Gravity.BOTTOM);
+//            linearLayout.setGravity(Gravity.BOTTOM);
             linearLayout.setOrientation(LinearLayout.VERTICAL);
-            linearLayout.setBackgroundColor(ContextCompat.getColor(this, R.color.colorGreen));
+//            linearLayout.setBackgroundColor(ContextCompat.getColor(this, R.color.colorGreen));
+
+            ImageView imageView = new ImageView(this);
+            imageView.setId(View.generateViewId());
+            imageView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, dpToPx(120)));
+            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            Picasso.get().load("http://192.168.1.196:8080/content/x.png").into(imageView);
+
             TextView textView = new TextView(this);
             textView.setId(View.generateViewId());
             textView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, dpToPx(40)));
@@ -98,6 +106,7 @@ public class ListMyProductsActivity extends AppCompatActivity implements Contrac
             textView.setGravity(Gravity.CENTER_VERTICAL);
             textView.setTextColor(ContextCompat.getColor(this, R.color.white));
             textView.setText(producto.getNombre());
+            linearLayout.addView(imageView);
             linearLayout.addView(textView);
             parentElement.addView(linearLayout);
         }

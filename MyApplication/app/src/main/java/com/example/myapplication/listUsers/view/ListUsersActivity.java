@@ -72,15 +72,12 @@ public class ListUsersActivity extends AppCompatActivity implements ContractList
         int counter = 0;
 
         for (Usuario usuario : usersList) {
-            Log.e("user_prod_id", "id:" + usuario.getId());
             if (counter == 0){
                 parentElement = columnLeft;
-                Log.i("Counter", "hhello");
                 counter = 1;
             }else{
                 parentElement = columnRight;
                 counter = 0;
-                Log.i("Counter", "hi");
             }
 
             LinearLayout linearLayout = new LinearLayout(this);

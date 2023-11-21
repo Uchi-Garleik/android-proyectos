@@ -24,8 +24,8 @@ public class ListMyProductsModel extends AppCompatActivity implements ContractLi
     private SharedPreferences sharedPreferencesUserCFG;
     private Context context;
 
-    //    private static final String IP_BASE = "192.168.1.196:8080";
-    private static final String IP_BASE = "192.168.104.75:8080";
+    private static final String IP_BASE = "192.168.1.196:8080";
+    //private static final String IP_BASE = "192.168.104.75:8080";
     private ListMyMyProductsPresenter presenter;
 
 //    public ListProductsModel(Context context){
@@ -56,7 +56,6 @@ public class ListMyProductsModel extends AppCompatActivity implements ContractLi
                     DataListMyProducts dataListMyProducts = response.body();
                     ArrayList<Producto> productsList = dataListMyProducts.getProductsList();
                     onListMyProductsListener.onFinished(productsList);
-                    Log.e("broquepasa","que coño2");
                 }else{
                     Log.e("Response Error", "HTTP state:38:" + response.code());
                     try{

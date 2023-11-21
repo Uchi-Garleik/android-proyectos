@@ -47,7 +47,6 @@ public class ListUsersModel implements ContractListUsers.Model {
                     DataListUsers dataListUsers = response.body();
                     ArrayList<Usuario> usersList = dataListUsers.getUsersList();
                     onListUsersListener.onFinished(usersList);
-                    Log.e("broquepasa","que coño2");
                 }else{
                     Log.e("Response Error", "HTTP state:38:" + response.code());
                     try{

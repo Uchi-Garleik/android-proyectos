@@ -1,15 +1,22 @@
 package com.example.myapplication.beans;
 
+import java.util.ArrayList;
+
 public class Producto {
     private String nombre;
     private String descripcion;
-//    private String howToStoreAnImage;
     private String categoria;
     private String marca;
     private String talla;
     private String estado;
     private double precio;
     private String moneda;
+    private byte[] image;
+    private String imagePath;
+    /* TODO:
+    *   private ArrayList<byte[]> arrayList;/
+    *   Test if you can store multiple images and work with them using an arrraylist of arrays of bytes
+    */
     private int idUser;
 
     public Producto() {
@@ -29,6 +36,22 @@ public class Producto {
                 ", moneda='" + moneda + '\'' +
                 ", idUser=" + idUser +
                 '}';
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 
     public int getIdUser() {
