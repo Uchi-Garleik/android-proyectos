@@ -97,8 +97,9 @@ public class ListMyProductsActivity extends AppCompatActivity implements Contrac
             imageView.setId(View.generateViewId());
             imageView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, dpToPx(120)));
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            Picasso.get().load("http://192.168.1.196:8080/content/x.png").into(imageView);
-
+//            Picasso.get().load("http://192.168.1.196:8080/content/x.png").into(imageView);
+            Picasso.get().setLoggingEnabled(true);
+            Picasso.get().load("http://192.168.104.75:8080/content/images/default.png").into(imageView);
             TextView textView = new TextView(this);
             textView.setId(View.generateViewId());
             textView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, dpToPx(40)));

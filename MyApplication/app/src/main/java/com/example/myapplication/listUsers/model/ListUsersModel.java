@@ -22,8 +22,8 @@ import retrofit2.Response;
 
 public class ListUsersModel implements ContractListUsers.Model {
 
-    // private static final String IP_BASE = "192.168.104.75:8080";
-    private static final String IP_BASE = "192.168.1.196:8080";
+     private static final String IP_BASE = "192.168.104.75:8080";
+//    private static final String IP_BASE = "192.168.1.196:8080";
     private ListUsersPresenter presenter;
 
 //    public ListProductsModel(Context context){

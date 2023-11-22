@@ -24,8 +24,8 @@ public class ListMyProductsModel extends AppCompatActivity implements ContractLi
     private SharedPreferences sharedPreferencesUserCFG;
     private Context context;
 
-    private static final String IP_BASE = "192.168.1.196:8080";
-    //private static final String IP_BASE = "192.168.104.75:8080";
+//    private static final String IP_BASE = "192.168.1.196:8080";
+    private static final String IP_BASE = "192.168.104.75:8080";
     private ListMyMyProductsPresenter presenter;
 
 //    public ListProductsModel(Context context){

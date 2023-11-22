@@ -17,7 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
-
+        <meta-data android:name="android.net.http.HTTP_CONNECTIONS_SCHEME" android:value="http|https"/>
         <activity android:name=".loginuser.view.LoginUserActivity" android:exported="true" android:parentActivityName=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -86,7 +86,6 @@ public class LoginUserActivity extends AppCompatActivity implements ContractLogi
                 Usuario usuario = new Usuario();
                 usuario.setUsername(username.getText().toString());
                 usuario.setPassword(password.getText().toString());
-                Toast.makeText(this, "wtf", Toast.LENGTH_SHORT).show();
                 presenter.loginUser(usuario);
             }else{
                 String userData = "";
