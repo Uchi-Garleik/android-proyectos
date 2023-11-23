@@ -84,37 +84,37 @@ public class AddProductActivity extends AppCompatActivity implements ContractAdd
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listitem);
-        addImageBtn = findViewById(R.id.addImageBtn);
-
-        pickMediaLauncher = registerForActivityResult(new PickVisualMedia(), uri -> {
-            // Callback is invoked after the user selects a media item or closes the
-            // photo picker.
-            if (uri != null) {
-                imgUri = uri;
-                Log.d("PhotoPicker", "Selected URI: " + imgUri);
-                addImageBtn.setImageURI(imgUri);
-
-            } else {
-                Log.d("PhotoPicker", "No media selected");
-            }
-        });
-
-
-        addImageBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Launch the photo picker activity here
-                // Literally just ignore the error this gives.
-                // # It just works #
-                pickMediaLauncher.launch(new PickVisualMediaRequest.Builder()
-                        .setMediaType(PickVisualMedia.ImageAndVideo.INSTANCE)
-                        .build());
-            }
-        });
-
+//        addImageBtn = findViewById(R.id.addImageBtn);
+//
+//        pickMediaLauncher = registerForActivityResult(new PickVisualMedia(), uri -> {
+//            // Callback is invoked after the user selects a media item or closes the
+//            // photo picker.
+//            if (uri != null) {
+//                imgUri = uri;
+//                Log.d("PhotoPicker", "Selected URI: " + imgUri);
+//                addImageBtn.setImageURI(imgUri);
+//
+//            } else {
+//                Log.d("PhotoPicker", "No media selected");
+//            }
+//        });
+//
+//
+//        addImageBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // Launch the photo picker activity here
+//                // Literally just ignore the error this gives.
+//                // # It just works #
+//                pickMediaLauncher.launch(new PickVisualMediaRequest.Builder()
+//                        .setMediaType(PickVisualMedia.ImageAndVideo.INSTANCE)
+//                        .build());
+//            }
+//        });
+//
 
         addProductActivity = this;
-        initComponents();
+//        initComponents();
     }
 
 

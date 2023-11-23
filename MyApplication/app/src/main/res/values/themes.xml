@@ -5,5 +5,16 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
+    
+    <style name="TextTitle">
+        <item name="android:textColor">@color/text_100</item>
+        <item name="fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">42dp</item>
+    </style>
+    <style name="TextSubtitle">
+        <item name="android:textColor">@color/text_200</item>
+        <item name="fontFamily">@font/roboto</item>
+        <item name="android:textSize">19dp</item>
+    </style>
     <style name="Theme.MyApplication" parent="Base.Theme.MyApplication" />
 </resources>

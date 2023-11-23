@@ -16,8 +16,6 @@ import com.example.myapplication.loginuser.view.LoginUserActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Boolean isViewVisible;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,17 +24,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initComponents() {
-        Button loginBtn = findViewById(R.id.loginBtn2);
-        loginBtn.setOnClickListener(v -> goToLogin(loginBtn));
+        Button loginBtn = findViewById(R.id.getStarted);
+        loginBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(this, LoginUserActivity.class);
+            startActivity(intent);
+        });
 
     }
-
-    private void goToLogin(Button loginBtn){
-        Intent intent = new Intent(this, LoginUserActivity.class);
-        startActivity(intent);
-    }
-
-
-
-
 }

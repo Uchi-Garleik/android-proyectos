@@ -154,6 +154,8 @@
                 android:background="@color/colorRed"
                 app:layout_constraintStart_toStartOf="@+id/textView6"
                 app:layout_constraintTop_toBottomOf="@+id/textView6" />
+<!--            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"-->
+<!--            style="@style/AppTheme.Spinner"-->
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout2"
@@ -243,7 +245,6 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_margin="0dp"
@@ -300,7 +301,6 @@
                 android:hint="EUR"
                 android:layout_margin="0dp"
                 android:textColorHint="@color/white"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 app:layout_constraintBottom_toBottomOf="@+id/editTextPrecio"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView15"

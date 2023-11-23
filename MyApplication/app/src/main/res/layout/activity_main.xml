@@ -26,39 +26,58 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginBottom="300dp"
-            android:background="@color/black"
+            android:src="@drawable/womanshoppingsquare"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:text="@string/welcome_message"
-            android:textColor="@color/white"
-            android:textSize="40dp"
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/getStarted"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView">
 
-        <TextView
-            android:id="@+id/textView12"
-            android:layout_width="300dp"
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SilkStreet"
+                style="@style/TextTitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="Discover the latest fashion trends and buy or sell clothing articles"
+                style="@style/TextSubtitle"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </LinearLayout>
+
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/getStarted"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Discover the latest fashion trends and buy or sell clothing articles"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:background="@drawable/button_bg"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Get Started"
+            android:textSize="17dp"
+            android:textAllCaps="false"
             android:textColor="@color/white"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Button"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

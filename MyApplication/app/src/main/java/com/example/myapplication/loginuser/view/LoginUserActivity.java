@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.HomeActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.addproducts.view.AddProductActivity;
 import com.example.myapplication.beans.Usuario;
@@ -51,35 +52,35 @@ public class LoginUserActivity extends AppCompatActivity implements ContractLogi
 
     private void initComponents() {
         sharedPreferencesUserCFG = getSharedPreferences("com.MyApp.USER_CFG", Context.MODE_PRIVATE);
-        buttonLogin = findViewById(R.id.loginBtn2);
-        buttonLogout = findViewById(R.id.logoutBtn);
-        buttonListProducts = findViewById(R.id.listadoProductosBtn);
-        buttonMostSells = findViewById(R.id.mostSellsBtn);
+        buttonLogin = findViewById(R.id.signInBtn);
+//        buttonLogout = findViewById(R.id.logoutBtn);
+//        buttonListProducts = findViewById(R.id.listadoProductosBtn);
+//        buttonMostSells = findViewById(R.id.mostSellsBtn);
 
         username = findViewById(R.id.editTextUsername);
         password = findViewById(R.id.editTextPassword);
 
-        buttonMostSells.setOnClickListener(v -> {
-            Intent intent = new Intent(this, ListUsersActivity.class);
-            startActivity(intent);
-        });
-
-        buttonListProducts.setOnClickListener(view -> {
-            if (!isLoggedIn()){
-                Toast.makeText(this, "Please Log In", Toast.LENGTH_SHORT).show();
-            }else{
-                Intent intent = new Intent(this, ListMyProductsActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        buttonLogout.setOnClickListener(view -> {
-            SharedPreferences.Editor editor = sharedPreferencesUserCFG.edit();
-            editor.remove("isLoggedIn");
-            editor.remove("username");
-            editor.remove("id");
-            editor.apply();
-        });
+//        buttonMostSells.setOnClickListener(v -> {
+//            Intent intent = new Intent(this, ListUsersActivity.class);
+//            startActivity(intent);
+//        });
+//
+//        buttonListProducts.setOnClickListener(view -> {
+//            if (!isLoggedIn()){
+//                Toast.makeText(this, "Please Log In", Toast.LENGTH_SHORT).show();
+//            }else{
+//                Intent intent = new Intent(this, ListMyProductsActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+//
+//        buttonLogout.setOnClickListener(view -> {
+//            SharedPreferences.Editor editor = sharedPreferencesUserCFG.edit();
+//            editor.remove("isLoggedIn");
+//            editor.remove("username");
+//            editor.remove("id");
+//            editor.apply();
+//        });
 
         buttonLogin.setOnClickListener(view -> {
             if ( !isLoggedIn() ){
@@ -92,7 +93,7 @@ public class LoginUserActivity extends AppCompatActivity implements ContractLogi
                 userData += "{Username: " + sharedPreferencesUserCFG.getString("username", "cuke") + "},";
                 userData += "Id: " + sharedPreferencesUserCFG.getInt("id",0) + "}";
                 Toast.makeText(this, userData, Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(this, AddProductActivity.class);
+                Intent intent = new Intent(this, HomeActivity.class);
                 startActivity(intent);
             }
         });
