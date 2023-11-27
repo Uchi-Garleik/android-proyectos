@@ -6,13 +6,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.RatingBar;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.HomeActivity;
+import com.example.myapplication.listproducts.view.HomeActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.RecyclerViewInterface;
 import com.example.myapplication.listrateusers.ContractListRateUsers;
@@ -116,7 +115,7 @@ public class ListUsersActivity extends AppCompatActivity implements ContractList
         Log.e("successListRateUsers: ", "holita:: " + usersList);
 
         // From this line until specified is the code for the RecyclerView
-//        dataInitialize(usersList);
+        dataInitialize(usersList);
         recyclerView = findViewById(R.id.usersColumn);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -152,7 +151,8 @@ public class ListUsersActivity extends AppCompatActivity implements ContractList
         intent.putExtra("id",usuarioArrayListRecycler.get(position).getId());
         intent.putExtra("username",usuarioArrayListRecycler.get(position).getUsername());
         intent.putExtra("image",usuarioArrayListRecycler.get(position).getImage());
-        Toast.makeText(listUsersActivity, "ID Usuario: " + usuarioArrayListRecycler.get(position).getId() + ", Username: " + usuarioArrayListRecycler.get(position).getUsername(), Toast.LENGTH_SHORT).show();
+//        Log.e("OnItemClick: ", "ARRAY:" + usuarioArrayListRecycler );
+//        Toast.makeText(listUsersActivity, "ID Usuario: " + usuarioArrayListRecycler.get(position).getId() + ", Username: " + usuarioArrayListRecycler.get(position).getUsername(), Toast.LENGTH_SHORT).show();
         startActivity(intent);
 
     }

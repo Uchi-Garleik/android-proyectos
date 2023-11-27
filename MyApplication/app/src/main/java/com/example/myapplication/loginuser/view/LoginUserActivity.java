@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myapplication.HomeActivity;
+import com.example.myapplication.listproducts.view.HomeActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.addproducts.view.AddProductActivity;
 import com.example.myapplication.beans.Usuario;

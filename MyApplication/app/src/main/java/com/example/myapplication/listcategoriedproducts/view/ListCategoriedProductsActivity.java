@@ -16,6 +16,7 @@ import com.example.myapplication.R;
 import com.example.myapplication.RecyclerViewInterface;
 import com.example.myapplication.adapters.ProductsAdapter;
 import com.example.myapplication.beans.Producto;
+import com.example.myapplication.buyproduct.view.BuyProductActivity;
 import com.example.myapplication.listcategoriedproducts.ContractListCategoriedProducts;
 import com.example.myapplication.listcategoriedproducts.presenter.ListCategoriedProductsPresenter;
 
@@ -118,6 +119,10 @@ public class ListCategoriedProductsActivity extends AppCompatActivity implements
 
     @Override
     public void OnItemClick(int position) {
-
+        Intent intent = new Intent(this, BuyProductActivity.class);
+        intent.putExtra("nombre", productoArrayListRecycler.get(position).getNombre());
+        intent.putExtra("descripcion", productoArrayListRecycler.get(position).getNombre());
+        intent.putExtra("imagePath", productoArrayListRecycler.get(position).getImagePath());
+        startActivity(intent);
     }
 }

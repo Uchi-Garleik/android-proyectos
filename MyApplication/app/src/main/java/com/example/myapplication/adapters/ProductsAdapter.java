@@ -16,6 +16,8 @@ import com.example.myapplication.RecyclerViewInterface;
 import com.example.myapplication.beans.Producto;
 import com.example.myapplication.beans.Usuario;
 import com.google.android.material.imageview.ShapeableImageView;
+import com.google.android.material.shape.CornerFamily;
+import com.google.android.material.shape.ShapeAppearanceModel;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -47,9 +49,9 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
         holder.productPrice.setText(String.valueOf(producto.getPrecio()));
         holder.productHeading.setText(producto.getNombre());
         String uniqueID = UUID.randomUUID().toString();
-//        Picasso.get().load("http://192.168.1.196:8080"+producto.getImagePath()+"?" + uniqueID).into(holder.productImage);
+        Picasso.get().load("http://192.168.1.196:8080"+producto.getImagePath()+"?" + uniqueID).into(holder.productImage);
         Log.e("onBindViewHolder: ", "http://192.168.104.75:8080" + producto.getImagePath()+"?" + uniqueID);
-        Picasso.get().load("http://192.168.104.75:8080"+producto.getImagePath()+"?" + uniqueID).into(holder.productImage);
+        //Picasso.get().load("http://192.168.104.75:8080"+producto.getImagePath()+"?" + uniqueID).into(holder.productImage);
     }
 
     @Override
@@ -63,7 +65,12 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
         TextView productPrice;
         public ProductsViewHolder(@NonNull View itemView, RecyclerViewInterface recyclerViewInterface) {
             super(itemView);
+
+            ShapeAppearanceModel shapeAppearanceModel = new ShapeAppearanceModel.Builder()
+                    .setAllCorners(CornerFamily.ROUNDED, 10) // Set the radius for all corners to 10dp
+                    .build();
             productImage = itemView.findViewById(R.id.productImage);
+            productImage.setShapeAppearanceModel(shapeAppearanceModel);
             productHeading = itemView.findViewById(R.id.productTitle);
             productPrice = itemView.findViewById(R.id.productPrice);
             Log.e("ProductsViewHolder: ", "PRODUCTHEADING: " + productHeading );

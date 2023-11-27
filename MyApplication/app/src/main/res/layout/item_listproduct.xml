@@ -2,40 +2,78 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_width="170dp"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp">
 
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/productImage"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/neko" />
 
-    <TextView
-        android:id="@+id/productTitle"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        style="@style/TextTitle"
-        android:textSize="17dp"
-        android:maxLength="33"
-        android:text="Flor De Mayo - Fragancias - Mini"
-        app:layout_constraintStart_toStartOf="@+id/productImage"
-        app:layout_constraintTop_toBottomOf="@+id/productImage" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:orientation="vertical"
+        android:padding="11dp"
+        android:background="@drawable/productbackgroundcolor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/productImage">
 
-    <TextView
-        android:id="@+id/productPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/TextSubtitle"
-        android:textColor="@color/colorRed"
-        android:layout_marginTop="3dp"
-        android:text="1,12€"
-        app:layout_constraintStart_toStartOf="@+id/productImage"
-        app:layout_constraintTop_toBottomOf="@+id/productTitle" />
+        <TextView
+            android:id="@+id/productTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            style="@style/TextTitle"
+            android:textSize="15dp"
+            android:maxLength="33"
+            android:text="Carro cocina mueble auxiliar consola"
+            app:layout_constraintStart_toStartOf="@+id/productImage"
+            app:layout_constraintTop_toBottomOf="@+id/productImage" />
+
+        <TextView
+            android:id="@+id/productPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="13dp"
+            style="@style/TextSubtitle"
+            android:textColor="@color/accent_100"
+            android:layout_marginTop="3dp"
+            android:text="60,00€"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/productImage"
+            app:layout_constraintTop_toBottomOf="@+id/productTitle" />
+
+        <TextView
+            android:id="@+id/productMarca"
+            style="@style/TextSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="13dp"
+            android:text="Nike"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/productPrice" />
+
+        <TextView
+            android:id="@+id/productTalla"
+            style="@style/TextSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="13dp"
+            android:text="38"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/productMarca" />
+
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
