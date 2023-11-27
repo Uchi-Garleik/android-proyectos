@@ -25,8 +25,8 @@ public class ListCategoriedProductsModel implements ContractListCategoriedProduc
     private SharedPreferences sharedPreferencesUserCFG;
     private Context context;
 
-    private static final String IP_BASE = "192.168.1.196:8080";
-    //    private static final String IP_BASE = "192.168.104.75:8080";
+//    private static final String IP_BASE = "192.168.1.196:8080";
+        private static final String IP_BASE = "192.168.104.75:8080";
     private ListCategoriedProductsPresenter presenter;
 
 //    public ListProductsModel(Context context){
@@ -43,7 +43,19 @@ public class ListCategoriedProductsModel implements ContractListCategoriedProduc
         ApiService apiService = RetrofitCliente.getClient("http://" + IP_BASE + "/untitled/").create(ApiService.class);
         sharedPreferencesUserCFG = context.getSharedPreferences("com.MyApp.USER_CFG", Context.MODE_PRIVATE);
         Call<DataListCategoriedProducts> call;
-        call = apiService.getDataListCategoriedProducts("PRODUCT.FILTER", producto.getCategoria());
+
+        if (!(producto.getCategoryArrayList().isEmpty())){
+            String categories = "";
+            for (String categoria : producto.getCategoryArrayList() ) {
+                categories += categoria+".";
+            }
+//            categories = categories.substring(0,categories.length()-1);
+            call = apiService.getDataListCategoriedProducts("PRODUCT.FILTER", categories);
+        }else {
+//            String categories = "";
+            call = apiService.getDataListCategoriedProducts("PRODUCT.FILTER", producto.getCategoria());
+        }
+
 
         call.enqueue(new Callback<DataListCategoriedProducts>() {
             @Override

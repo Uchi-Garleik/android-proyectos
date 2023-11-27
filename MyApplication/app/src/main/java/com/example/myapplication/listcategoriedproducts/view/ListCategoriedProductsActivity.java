@@ -29,6 +29,7 @@ public class ListCategoriedProductsActivity extends AppCompatActivity implements
     Button menBtn;
     Button womenBtn;
 
+    private ArrayList<String> categoryArray;
     private ArrayList<Producto> productoArrayList;
     private ListCategoriedProductsPresenter presenter = new ListCategoriedProductsPresenter(this);
     private static ListCategoriedProductsActivity listCategoriedProductsActivity = null;
@@ -54,49 +55,38 @@ public class ListCategoriedProductsActivity extends AppCompatActivity implements
     }
 
     private void initComponents() {
+        categoryArray = new ArrayList<>();
         Producto producto = new Producto();
-        producto.setCategoria("Clothing");
-        presenter.listCategoriedProducts(producto);
+        producto.setCategoria("");
         menBtn = findViewById(R.id.menBtn);
         womenBtn = findViewById(R.id.womenBtn);
 
         // TODO: ARRAYLIST THAT STORES FILTERS
 
         menBtn.setOnClickListener(v -> {
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putString("FILTER", "");
-            editor.apply();
 
-            Log.e("initComponents: ", "MY FILTERS FOR PRODUCTS:" + sharedPreferences.getString("FILTER","") );
+            if (categoryArray.contains("men")){
+                categoryArray.remove("men");
+            }else{
+                categoryArray.add("men");
+            }
+            Log.e("initComponents: ", "MY FILTERS FOR PRODUCTS:" + categoryArray );
+            producto.setCategoryArrayList(categoryArray);
+            presenter.listCategoriedProducts(producto);
         });
 
         womenBtn.setOnClickListener(v -> {
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            String currentFilter = sharedPreferences.getString("FILTER", "");
-
-            if (!currentFilter.isEmpty()) {
-                // Check if the current filter contains "women"
-                if (currentFilter.contains("women")) {
-                    Log.e("initComponents: ", "wtfqweqe");
-                    // Remove "women" from the current filter
-                    currentFilter = currentFilter.replace("&women", "");
-                    // If "women" was the only filter, you might want to handle the case where the resulting string is empty
-                } else {
-                    // Add "women" to the current filter
-                    currentFilter += "&women";
-                }
-            } else {
-                // If the current filter is empty, set it to "women"
-                currentFilter = "women";
+            if (categoryArray.contains("women")){
+                categoryArray.remove("women");
+            }else{
+                categoryArray.add("women");
             }
-
-            // Update the shared preferences with the modified filter
-            editor.putString("FILTER", currentFilter);
-            editor.apply();
-            Log.e("initComponents: ", "MY FILTERS FOR PRODUCTS:" + sharedPreferences.getString("FILTER","") );
+            Log.e("initComponents: ", "MY FILTERS FOR PRODUCTS:" + categoryArray );
+            producto.setCategoryArrayList(categoryArray);
+            presenter.listCategoriedProducts(producto);
         });
 
-
+        presenter.listCategoriedProducts(producto);
     }
 
     @Override

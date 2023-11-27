@@ -116,11 +116,11 @@ public class ListUsersActivity extends AppCompatActivity implements ContractList
         Log.e("successListRateUsers: ", "holita:: " + usersList);
 
         // From this line until specified is the code for the RecyclerView
-        dataInitialize(usersList);
+//        dataInitialize(usersList);
         recyclerView = findViewById(R.id.usersColumn);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        UsersAdapter usersAdapter = new UsersAdapter(this, usuarioArrayListRecycler, this);
+        UsersAdapter usersAdapter = new UsersAdapter(this, usersList, this);
         recyclerView.setAdapter(usersAdapter);
         usersAdapter.notifyDataSetChanged();
 
@@ -135,12 +135,11 @@ public class ListUsersActivity extends AppCompatActivity implements ContractList
 
         for (Usuario usuario : usersList) {
             Usuario usuarioAux = usuario;
-//            usuarioAux.setRating(usuario.getRating());
-//            usuarioAux.setId(usuario.getId());
             usuarioArrayListRecycler.add(usuarioAux);
         }
 
     }
+
     // End of the code for the RecyclerView
     @Override
     public void failureListRateUsers(String err) {

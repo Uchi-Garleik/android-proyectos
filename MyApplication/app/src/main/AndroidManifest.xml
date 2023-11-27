@@ -34,11 +34,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".listcategoriedproducts.view.ListCategoriedProductsActivity" android:exported="true" android:parentActivityName=".MainActivity">
-            <!--            <intent-filter>-->
-            <!--                <action android:name="android.intent.action.MAIN" />-->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <!--                <category android:name="android.intent.category.LAUNCHER" />-->
-            <!--            </intent-filter>-->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".addproducts.view.AddProductActivity" android:exported="true" android:parentActivityName=".loginuser.view.LoginUserActivity">
 <!--            <intent-filter>-->

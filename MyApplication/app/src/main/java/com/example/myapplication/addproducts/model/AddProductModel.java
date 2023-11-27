@@ -24,8 +24,8 @@ import retrofit2.Response;
 
 public class AddProductModel implements ContractAddProducts.Model {
 
-    private static final String IP_BASE = "192.168.1.196:8080";
-//    private static final String IP_BASE = "192.168.104.75:8080";
+//    private static final String IP_BASE = "192.168.1.196:8080";
+    private static final String IP_BASE = "192.168.104.75:8080";
     private AddProductPresenter presenter;
     public AddProductModel(AddProductPresenter presenter){this.presenter = presenter;}
 

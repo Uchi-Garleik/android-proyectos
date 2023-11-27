@@ -9,6 +9,22 @@ public class Producto {
     private String marca;
     private String talla;
     private String estado;
+    private ArrayList<String> categoryArrayList;
+
+    private void addCategoryToArrayList(String category){
+        if (categoryArrayList!=null){
+            categoryArrayList.add(category);
+        }
+    }
+
+    public ArrayList<String> getCategoryArrayList() {
+        return categoryArrayList;
+    }
+
+    public void setCategoryArrayList(ArrayList<String> categoryArrayList) {
+        this.categoryArrayList = categoryArrayList;
+    }
+
     private double precio;
     private String moneda;
     private byte[] image;
@@ -20,7 +36,7 @@ public class Producto {
     private int idUser;
 
     public Producto() {
-
+        categoryArrayList = new ArrayList<>();
     }
 
     @Override
