@@ -34,6 +34,7 @@ public class Producto {
                 ", estado='" + estado + '\'' +
                 ", precio=" + precio +
                 ", moneda='" + moneda + '\'' +
+                ", imagePath='" + imagePath + '\'' +
                 ", idUser=" + idUser +
                 '}';
     }

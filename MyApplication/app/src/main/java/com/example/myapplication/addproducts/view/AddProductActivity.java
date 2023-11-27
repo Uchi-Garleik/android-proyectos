@@ -114,7 +114,7 @@ public class AddProductActivity extends AppCompatActivity implements ContractAdd
 //
 
         addProductActivity = this;
-//        initComponents();
+        initComponents();
     }
 
 

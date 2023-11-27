@@ -24,8 +24,8 @@ import retrofit2.Response;
 
 public class LoginUserModel implements ContractLoginUser.Model {
 
-//    private static final String IP_BASE = "192.168.1.196:8080";
-    private static final String IP_BASE = "192.168.104.75:8080";
+    private static final String IP_BASE = "192.168.1.196:8080";
+//    private static final String IP_BASE = "192.168.104.75:8080";
     private LoginUserPresenter presenter;
     public LoginUserModel(LoginUserPresenter presenter){this.presenter = presenter;}
 

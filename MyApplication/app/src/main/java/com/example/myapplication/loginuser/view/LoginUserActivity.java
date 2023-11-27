@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -15,8 +14,6 @@ import com.example.myapplication.HomeActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.addproducts.view.AddProductActivity;
 import com.example.myapplication.beans.Usuario;
-import com.example.myapplication.listUsers.view.ListUsersActivity;
-import com.example.myapplication.listproducts.view.ListMyProductsActivity;
 import com.example.myapplication.loginuser.ContractLoginUser;
 import com.example.myapplication.loginuser.presenter.LoginUserPresenter;
 
@@ -93,7 +90,7 @@ public class LoginUserActivity extends AppCompatActivity implements ContractLogi
                 userData += "{Username: " + sharedPreferencesUserCFG.getString("username", "cuke") + "},";
                 userData += "Id: " + sharedPreferencesUserCFG.getInt("id",0) + "}";
                 Toast.makeText(this, userData, Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(this, HomeActivity.class);
+                Intent intent = new Intent(LoginUserActivity.this, HomeActivity.class);
                 startActivity(intent);
             }
         });
@@ -107,7 +104,7 @@ public class LoginUserActivity extends AppCompatActivity implements ContractLogi
         editor.putString("username", usuario.getUsername());
         editor.putInt("id", usuario.getId());
         editor.apply();
-        Intent intent = new Intent(this, AddProductActivity.class);
+        Intent intent = new Intent(LoginUserActivity.this, AddProductActivity.class);
         startActivity(intent);
     }
 

@@ -2,8 +2,11 @@ package com.example.myapplication.utils;
 
 import com.example.myapplication.addproducts.data.DataProducts;
 import com.example.myapplication.listUsers.data.DataListUsers;
+import com.example.myapplication.listcategoriedproducts.data.DataListCategoriedProducts;
 import com.example.myapplication.listproducts.data.DataListMyProducts;
+import com.example.myapplication.listrateusers.data.DataListRateUsers;
 import com.example.myapplication.loginuser.data.DataUsers;
+import com.example.myapplication.rateusers.data.DataRateUser;
 
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -37,6 +40,15 @@ public interface ApiService {
                                          @Query("image") String image);
 
     @GET("MyServlet")
+    Call<DataRateUser> getDataRateUser(@Query("ACTION") String action, @Query("idRatedUser") int idRatedUser, @Query("idRatingUser") int idRatingUser, @Query("rating") double rating);
+
+    @GET("MyServlet")
+    Call<DataListRateUsers> getDataListRateUsers(@Query("ACTION") String action, @Query("idUser") int idUser);
+
+    @GET("MyServlet")
+    Call<DataListRateUsers> getDataListRateUsers(@Query("ACTION") String action, @Query("idUser") int idUser, @Query("filter") String filter);
+
+    @GET("MyServlet")
     Call<DataListMyProducts> getDataListProducts(@Query("ACTION") String action);
 
     @GET("MyServlet")
@@ -44,6 +56,9 @@ public interface ApiService {
 
     @GET("MyServlet")
     Call<DataListMyProducts> getDataListProducts(@Query("ACTION") String action, @Query("idUser") int idUser);
+
+    @GET("MyServlet")
+    Call<DataListCategoriedProducts> getDataListCategoriedProducts(@Query("ACTION") String action, @Query("categoria") String categoria);
 
     @GET("MyServlet")
     Call<DataListUsers> getDataListUsers(@Query("ACTION") String action);

@@ -8,5 +8,18 @@
     <string name="select">Select Item</string>
 
     <string name="signup"><b>Sign Up</b></string>
-
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="clothing_category_kids">Kids</string>
+    <string name="clothing_category_beauty">Beauty</string>
+    <string name="clothing_category_bags">Bags</string>
+    <string name="clothing_category_activewear">Activewear</string>
+    <string name="clothing_category_sleepwear">Sleepwear</string>
+    <string name="clothing_category_swimwear">Swimwear</string>
+    <string name="clothing_category_underwear">Underwear</string>
+    <string name="clothing_category_shoes">Shoes</string>
+    <string name="clothing_category_tops">Tops</string>
+    <string name="clothing_category_dresses">Dresses</string>
+    <string name="clothing_category_men">Men</string>
+    <string name="clothing_category_women">Women</string>
 </resources>

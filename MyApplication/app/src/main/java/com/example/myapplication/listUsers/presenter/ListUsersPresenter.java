@@ -3,6 +3,7 @@ package com.example.myapplication.listUsers.presenter;
 import android.content.Context;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import com.example.myapplication.beans.Usuario;
 import com.example.myapplication.listUsers.ContractListUsers;
