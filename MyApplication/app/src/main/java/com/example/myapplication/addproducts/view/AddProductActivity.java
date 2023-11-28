@@ -84,34 +84,53 @@ public class AddProductActivity extends AppCompatActivity implements ContractAdd
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listitem);
-//        addImageBtn = findViewById(R.id.addImageBtn);
-//
-//        pickMediaLauncher = registerForActivityResult(new PickVisualMedia(), uri -> {
-//            // Callback is invoked after the user selects a media item or closes the
-//            // photo picker.
-//            if (uri != null) {
-//                imgUri = uri;
-//                Log.d("PhotoPicker", "Selected URI: " + imgUri);
-//                addImageBtn.setImageURI(imgUri);
-//
-//            } else {
-//                Log.d("PhotoPicker", "No media selected");
-//            }
-//        });
-//
-//
-//        addImageBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                // Launch the photo picker activity here
-//                // Literally just ignore the error this gives.
-//                // # It just works #
-//                pickMediaLauncher.launch(new PickVisualMediaRequest.Builder()
-//                        .setMediaType(PickVisualMedia.ImageAndVideo.INSTANCE)
-//                        .build());
-//            }
-//        });
-//
+        addImageBtn = findViewById(R.id.addImageBtn);
+
+        pickMediaLauncher = registerForActivityResult(new PickVisualMedia(), uri -> {
+            // Callback is invoked after the user selects a media item or closes the
+            // photo picker.
+            if (uri != null) {
+                imgUri = uri;
+                Log.d("PhotoPicker", "Selected URI: " + imgUri);
+                addImageBtn.setImageURI(imgUri);
+
+            } else {
+                Log.d("PhotoPicker", "No media selected");
+            }
+        });
+
+
+        addImageBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Launch the photo picker activity here
+                // Literally just ignore the error this gives.
+                // # It just works #
+                pickMediaLauncher.launch(new PickVisualMediaRequest.Builder()
+                        .setMediaType(PickVisualMedia.ImageAndVideo.INSTANCE)
+                        .build());
+            }
+        });
+
+
+        AutoCompleteTextView categoriesAutoCompleteTextView = findViewById(R.id.categoryAutoCompleteTxtView);
+        String[] categoriesArrayString = getResources().getStringArray(R.array.categories);
+        ArrayAdapter<String> categoriesArrayAdapter = new ArrayAdapter(this,R.layout.dropdown_item, categoriesArrayString);
+        categoriesAutoCompleteTextView.setAdapter(categoriesArrayAdapter);
+
+        AutoCompleteTextView estadoProductoAutoCompleteTextView = findViewById(R.id.estadoProductoAutoCompleteTxtView);
+        String[] estadosArrayString = getResources().getStringArray(R.array.estados);
+        ArrayAdapter<String> estadoProductoArrayAdapter = new ArrayAdapter(this,R.layout.dropdown_item, estadosArrayString);
+        estadoProductoAutoCompleteTextView.setAdapter(estadoProductoArrayAdapter);
+
+        AutoCompleteTextView monedaAutoCompleteTextView = findViewById(R.id.monedaAutoCompleteTxtView);
+        String[] monedaArrayString = getResources().getStringArray(R.array.monedas);
+        ArrayAdapter<String> monedasArrayAdapter = new ArrayAdapter(this,R.layout.dropdown_item, monedaArrayString);
+        monedaAutoCompleteTextView.setAdapter(monedasArrayAdapter);
+
+
+
+
 
         addProductActivity = this;
         initComponents();
@@ -125,28 +144,28 @@ public class AddProductActivity extends AppCompatActivity implements ContractAdd
         pageTitle = findViewById(R.id.pageTitle);
         pageTitle.setText(pageTitle.getText().toString() + ", " + sharedPreferencesUserCFG.getString("username","DEFAULT_USERNAME") );
 
-        categoryAutoCompleteTxtView = findViewById(R.id.categoryAutoCompleteTxtView);
-        adapterCategories = new ArrayAdapter<String>(this, R.layout.list_item, categories);
-        categoryAutoCompleteTxtView.setAdapter(adapterCategories);
+//        categoryAutoCompleteTxtView = findViewById(R.id.categoryAutoCompleteTxtView);
+//        adapterCategories = new ArrayAdapter<String>(this, R.layout.list_item, categories);
+//        categoryAutoCompleteTxtView.setAdapter(adapterCategories);
 
-        estadoAutoCompleteTxtView = findViewById(R.id.estadoProductoAutoCompleteTxtView);
-        adapterEstado = new ArrayAdapter<String>(this, R.layout.list_item, estados);
-        estadoAutoCompleteTxtView.setAdapter(adapterEstado);
-
-        currenciesAutoCompleteTxtView = findViewById(R.id.monedaAutoCompleteTxtView);
-        adapterCurrencies = new ArrayAdapter<String>(this, R.layout.list_item, currencies);
-        currenciesAutoCompleteTxtView.setAdapter(adapterCurrencies);
+//        estadoAutoCompleteTxtView = findViewById(R.id.estadoProductoAutoCompleteTxtView);
+//        adapterEstado = new ArrayAdapter<String>(this, R.layout.list_item, estados);
+//        estadoAutoCompleteTxtView.setAdapter(adapterEstado);
+//
+//        currenciesAutoCompleteTxtView = findViewById(R.id.monedaAutoCompleteTxtView);
+//        adapterCurrencies = new ArrayAdapter<String>(this, R.layout.list_item, currencies);
+//        currenciesAutoCompleteTxtView.setAdapter(adapterCurrencies);
 
 
         idUsuario = sharedPreferencesUserCFG.getInt("id",0);
         nombre = findViewById(R.id.editTextNombreArticulo);
         descripcion = findViewById(R.id.editTextDescripcionArticulo);
-        categoria = findViewById(R.id.categoryAutoCompleteTxtView);
+//        categoria = findViewById(R.id.categoryAutoCompleteTxtView);
         marca = findViewById(R.id.editTextMarca);
         talla = findViewById(R.id.editTextTalla);
-        estado = findViewById(R.id.estadoProductoAutoCompleteTxtView);
+//        estado = findViewById(R.id.estadoProductoAutoCompleteTxtView);
         precio = findViewById(R.id.editTextPrecio);
-        moneda = findViewById(R.id.monedaAutoCompleteTxtView);
+//        moneda = findViewById(R.id.monedaAutoCompleteTxtView);
         addProductBtn = findViewById(R.id.buttonAddProduct);
         backButton = findViewById(R.id.backButton);
 

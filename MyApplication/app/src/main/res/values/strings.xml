@@ -22,4 +22,28 @@
     <string name="clothing_category_dresses">Dresses</string>
     <string name="clothing_category_men">Men</string>
     <string name="clothing_category_women">Women</string>
+
+    <string-array name="categories">
+        <item>Men</item>
+        <item>Women</item>
+        <item>Children</item>
+        <item>Sleepwear</item>
+    </string-array>
+
+    <string-array name="monedas">
+        <item>Men</item>
+        <item>Women</item>
+        <item>Children</item>
+        <item>Sleepwear</item>
+    </string-array>
+
+    <string-array name="estados">
+        <item>Nuevo</item>
+        <item>Usado</item>
+        <item>Children</item>
+        <item>Sleepwear</item>
+    </string-array>
+
+
+
 </resources>
