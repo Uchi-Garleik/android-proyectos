@@ -27,8 +27,8 @@ public class ListRateUsersModel implements ContractListRateUsers.Model {
     Context context;
     SharedPreferences sharedPreferences;
 
-         private static final String IP_BASE = "192.168.104.75:8080";
-//    private static final String IP_BASE = "192.168.1.196:8080";
+//         private static final String IP_BASE = "192.168.104.75:8080";
+    private static final String IP_BASE = "192.168.1.196:8080";
     private ListRateUsersPresenter presenter;
 
 //    public ListProductsModel(Context context){
