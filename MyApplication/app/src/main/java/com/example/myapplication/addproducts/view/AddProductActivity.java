@@ -144,28 +144,15 @@ public class AddProductActivity extends AppCompatActivity implements ContractAdd
         pageTitle = findViewById(R.id.pageTitle);
         pageTitle.setText(pageTitle.getText().toString() + ", " + sharedPreferencesUserCFG.getString("username","DEFAULT_USERNAME") );
 
-//        categoryAutoCompleteTxtView = findViewById(R.id.categoryAutoCompleteTxtView);
-//        adapterCategories = new ArrayAdapter<String>(this, R.layout.list_item, categories);
-//        categoryAutoCompleteTxtView.setAdapter(adapterCategories);
-
-//        estadoAutoCompleteTxtView = findViewById(R.id.estadoProductoAutoCompleteTxtView);
-//        adapterEstado = new ArrayAdapter<String>(this, R.layout.list_item, estados);
-//        estadoAutoCompleteTxtView.setAdapter(adapterEstado);
-//
-//        currenciesAutoCompleteTxtView = findViewById(R.id.monedaAutoCompleteTxtView);
-//        adapterCurrencies = new ArrayAdapter<String>(this, R.layout.list_item, currencies);
-//        currenciesAutoCompleteTxtView.setAdapter(adapterCurrencies);
-
-
         idUsuario = sharedPreferencesUserCFG.getInt("id",0);
         nombre = findViewById(R.id.editTextNombreArticulo);
         descripcion = findViewById(R.id.editTextDescripcionArticulo);
-//        categoria = findViewById(R.id.categoryAutoCompleteTxtView);
+        categoria = findViewById(R.id.categoryAutoCompleteTxtView);
         marca = findViewById(R.id.editTextMarca);
         talla = findViewById(R.id.editTextTalla);
-//        estado = findViewById(R.id.estadoProductoAutoCompleteTxtView);
+        estado = findViewById(R.id.estadoProductoAutoCompleteTxtView);
         precio = findViewById(R.id.editTextPrecio);
-//        moneda = findViewById(R.id.monedaAutoCompleteTxtView);
+        moneda = findViewById(R.id.monedaAutoCompleteTxtView);
         addProductBtn = findViewById(R.id.buttonAddProduct);
         backButton = findViewById(R.id.backButton);
 
@@ -175,7 +162,6 @@ public class AddProductActivity extends AppCompatActivity implements ContractAdd
         });
 
         addProductBtn.setOnClickListener(view -> {
-            Toast.makeText(this, "Wtf", Toast.LENGTH_SHORT).show();
             Producto producto = new Producto();
             producto.setIdUser(idUsuario);
             producto.setNombre(nombre.getText().toString());

@@ -31,17 +31,16 @@
     </string-array>
 
     <string-array name="monedas">
-        <item>Men</item>
-        <item>Women</item>
-        <item>Children</item>
-        <item>Sleepwear</item>
+        <item>EUR</item>
+        <item>USD</item>
+        <item>YEN</item>
+        <item>RUB</item>
     </string-array>
 
     <string-array name="estados">
         <item>Nuevo</item>
         <item>Usado</item>
-        <item>Children</item>
-        <item>Sleepwear</item>
+        <item>Roto</item>
     </string-array>
 
 
