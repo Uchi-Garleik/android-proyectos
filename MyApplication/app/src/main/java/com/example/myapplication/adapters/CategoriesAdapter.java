@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myapplication.R;
 import com.example.myapplication.RecyclerViewInterface;
 import com.example.myapplication.beans.Category;
-import com.google.android.material.imageview.ShapeableImageView;
 
 import java.util.ArrayList;
 
@@ -32,7 +30,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
     @Override
     public CategoriesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View v = LayoutInflater.from(context).inflate(R.layout.item_listproduct, parent, false);
+        View v = LayoutInflater.from(context).inflate(R.layout.item_listcategory, parent, false);
 
         return new CategoriesViewHolder(v, recyclerViewInterface);
     }
@@ -40,8 +38,8 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
     @Override
     public void onBindViewHolder(@NonNull CategoriesViewHolder holder, int position) {
         Category category = categoriesArrayList.get(position);
-        holder.tvHeading.setText(category.getHeading());
-        holder.titleImage.setImageResource(category.getTitleImage());
+        holder.button.setText(category.getCategoryName());
+
     }
 
     @Override
@@ -51,16 +49,11 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
 
     public static class CategoriesViewHolder extends RecyclerView.ViewHolder{
 
-//        Button button;
-
-        ShapeableImageView titleImage;
-        TextView tvHeading;
+        Button button;
 
         public CategoriesViewHolder(@NonNull View itemView, RecyclerViewInterface recyclerViewInterface) {
             super(itemView);
-//            button = itemView.findViewById(R.id.categoryButton);
-//            titleImage = itemView.findViewById(R.id.title_image);
-//            tvHeading = itemView.findViewById(R.id.tvHeading);
+            button = itemView.findViewById(R.id.categoryItemButton);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

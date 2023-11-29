@@ -52,6 +52,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/button_bg"
+                    android:backgroundTint="@color/accent_200"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
                     android:layout_marginTop="10dp"
                     android:textColor="@color/white"
                     android:textSize="18dp"
@@ -61,6 +64,9 @@
                     android:id="@+id/menBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:backgroundTint="@color/accent_200"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
                     android:background="@drawable/button_bg"
                     android:layout_marginTop="10dp"
                     android:textColor="@color/white"
@@ -112,7 +118,7 @@
             android:layout_height="50dp"
             android:orientation="horizontal"
             android:gravity="center"
-            android:background="@color/bg_300"
+            android:background="@color/primary_300"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
@@ -124,10 +130,11 @@
                 android:orientation="vertical">
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/UhomeMenuBtn"
+                    android:id="@+id/homeMenuBtn"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
-                    android:background="@drawable/baseline_home_24" />
+                    android:background="@drawable/baseline_home_24"
+                    android:backgroundTint="@color/black" />
             </LinearLayout>
 
             <LinearLayout
@@ -138,6 +145,7 @@
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/categoryMenuBtn"
+                    android:backgroundTint="@color/primary_100"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
                     android:background="@drawable/baseline_manage_search_24" />
@@ -149,9 +157,10 @@
                 android:layout_marginRight="40dp"
                 android:orientation="vertical">
                 <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/addProductMenuBtn"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
-                    android:background="@drawable/baseline_favorite_24"/>
+                    android:background="@drawable/baseline_add_circle_outline_24"/>
             </LinearLayout>
 
             <LinearLayout
@@ -172,7 +181,6 @@
                 android:orientation="vertical">
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/usersMenuBtn"
-                    android:backgroundTint="@color/primary_100"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
                     android:background="@drawable/baseline_person_24"/>

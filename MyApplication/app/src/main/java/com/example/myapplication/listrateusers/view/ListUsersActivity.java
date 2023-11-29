@@ -11,6 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.addproducts.view.AddProductActivity;
+import com.example.myapplication.listcategoriedproducts.view.ListCategoriedProductsActivity;
 import com.example.myapplication.listproducts.view.HomeActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.RecyclerViewInterface;
@@ -32,8 +34,12 @@ public class ListUsersActivity extends AppCompatActivity implements ContractList
     private ArrayList<Usuario> usuarioArrayList;
     private ListRateUsersPresenter presenter = new ListRateUsersPresenter(this);
     private static ListUsersActivity listUsersActivity = null;
-
+    Button homeBtn;
+    Button usuariosBtn;
+    Button productsBtn;
+    Button addProductMenuBtn;
     private Button topFavouriteUsersButton;
+    private Button topHighestSellsButton;
 
     private Button homeButton;
 
@@ -75,6 +81,45 @@ public class ListUsersActivity extends AppCompatActivity implements ContractList
         editor2.putString("FavouriteUsers", "false");
         editor2.apply();
 
+
+        homeBtn = findViewById(R.id.homeMenuBtn);
+        usuariosBtn = findViewById(R.id.usersMenuBtn);
+        productsBtn = findViewById(R.id.categoryMenuBtn);
+        addProductMenuBtn = findViewById(R.id.addProductMenuBtn);
+
+        homeBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(this, HomeActivity.class);
+            startActivity(intent);
+        });
+
+        productsBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(this, ListCategoriedProductsActivity.class);
+            startActivity(intent);
+        });
+
+        usuariosBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(this, ListUsersActivity.class);
+            startActivity(intent);
+        });
+
+        addProductMenuBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(this, AddProductActivity.class);
+            startActivity(intent);
+        });
+
+        topHighestSellsButton = findViewById(R.id.topHighestSellsUsers);
+        topHighestSellsButton.setOnClickListener(v -> {
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            if ( sharedPreferences.getString("HighestSells","false").equals("true") ){
+                editor.putString("HighestSells","false");
+            }
+            if ( sharedPreferences.getString("HighestSells","false").equals("false") ){
+                editor.putString("HighestSells","true");
+            }
+            editor.apply();
+            presenter.listRateUsers(usuario);
+        });
+
         topFavouriteUsersButton = findViewById(R.id.topFavouriteUsers);
         topFavouriteUsersButton.setOnClickListener(v -> {
             SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -90,7 +135,7 @@ public class ListUsersActivity extends AppCompatActivity implements ContractList
 
         presenter.listRateUsers(usuario);
 
-        homeButton = findViewById(R.id.UhomeMenuBtn);
+        homeButton = findViewById(R.id.homeMenuBtn);
         homeButton.setOnClickListener(v -> {
             Intent intent = new Intent(this, HomeActivity.class);
             startActivity(intent);

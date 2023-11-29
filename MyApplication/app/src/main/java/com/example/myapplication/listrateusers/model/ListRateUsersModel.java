@@ -43,15 +43,23 @@ public class ListRateUsersModel implements ContractListRateUsers.Model {
     @Override
     public void listRateUsersApi(Usuario usuario, ContractListRateUsers.Model.OnListRateUsersListener onListRateUsersListener) {
         sharedPreferences = context.getSharedPreferences("com.MyApp.USER_CFG",Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor;
         ApiService apiService = RetrofitCliente.getClient("http://" + IP_BASE + "/untitled/").create(ApiService.class);
-        Call<DataListRateUsers> call;
+        Call<DataListRateUsers> call = null;
 
-        if (sharedPreferences.getString("FavouriteUsers","false").equals("false")){
-            call = apiService.getDataListRateUsers("RATING.FINDALL", sharedPreferences.getInt("id",0));
-        }else{
-            call = apiService.getDataListRateUsers("RATING.FINDALL", sharedPreferences.getInt("id",0), "FavouriteUsers");
+        if (sharedPreferences.getString("FavouriteUsers","false").equals("false") && sharedPreferences.getString("HighestSells","false").equals("false")){
+            Log.e("listRateUsersApi: ", "err: 1" );
+            call = apiService.getDataListRateUsers("RATING.FINDALL", sharedPreferences.getInt("id",0), "FINDALL");
         }
 
+        if(sharedPreferences.getString("HighestSells","false").equals("true")){
+            Log.e("listRateUsersApi: ", "err: 2" );
+            call = apiService.getDataListRateUsers("RATING.FINDALL",sharedPreferences.getInt("id",0), "HighestSells");
+        }
+
+        if ( sharedPreferences.getString("FavouriteUsers","false").equals("true") ){
+            call = apiService.getDataListRateUsers("RATING.FINDALL", sharedPreferences.getInt("id",0), "FavouriteUsers");
+        }
 
         call.enqueue(new Callback<DataListRateUsers>() {
             @Override

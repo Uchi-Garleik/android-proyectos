@@ -31,6 +31,7 @@ import com.example.myapplication.R;
 import com.example.myapplication.addproducts.ContractAddProducts;
 import com.example.myapplication.addproducts.presenter.AddProductPresenter;
 import com.example.myapplication.beans.Producto;
+import com.example.myapplication.listproducts.view.HomeActivity;
 import com.example.myapplication.loginuser.view.LoginUserActivity;
 
 import java.io.ByteArrayOutputStream;
@@ -157,7 +158,7 @@ public class AddProductActivity extends AppCompatActivity implements ContractAdd
         backButton = findViewById(R.id.backButton);
 
         backButton.setOnClickListener(view -> {
-            Intent intent = new Intent(this, LoginUserActivity.class);
+            Intent intent = new Intent(this, HomeActivity.class);
             startActivity(intent);
         });
 

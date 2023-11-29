@@ -30,7 +30,7 @@ public class HomeActivity extends AppCompatActivity implements ContractListMyPro
     private ListMyMyProductsPresenter presenter = new ListMyMyProductsPresenter(this);
     private static HomeActivity listMyProductsActivity = null;
 
-
+    Button homeBtn;
     Button usuariosBtn;
     Button productsBtn;
     Button addProductMenuBtn;
@@ -61,6 +61,7 @@ public class HomeActivity extends AppCompatActivity implements ContractListMyPro
         Producto producto = new Producto();
         presenter.listMyProducts(producto);
 
+        homeBtn = findViewById(R.id.homeMenuBtn);
         usuariosBtn = findViewById(R.id.usersMenuBtn);
         productsBtn = findViewById(R.id.categoryMenuBtn);
         addProductMenuBtn = findViewById(R.id.addProductMenuBtn);

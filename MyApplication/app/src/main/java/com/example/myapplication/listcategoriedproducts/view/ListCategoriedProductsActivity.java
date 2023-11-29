@@ -2,6 +2,7 @@ package com.example.myapplication.listcategoriedproducts.view;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -9,16 +10,21 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
 import com.example.myapplication.RecyclerViewInterface;
 import com.example.myapplication.adapters.ProductsAdapter;
+import com.example.myapplication.addproducts.view.AddProductActivity;
+import com.example.myapplication.beans.Category;
 import com.example.myapplication.beans.Producto;
 import com.example.myapplication.buyproduct.view.BuyProductActivity;
 import com.example.myapplication.listcategoriedproducts.ContractListCategoriedProducts;
 import com.example.myapplication.listcategoriedproducts.presenter.ListCategoriedProductsPresenter;
+import com.example.myapplication.listproducts.view.HomeActivity;
+import com.example.myapplication.listrateusers.view.ListUsersActivity;
 
 import java.util.ArrayList;
 
@@ -29,7 +35,10 @@ public class ListCategoriedProductsActivity extends AppCompatActivity implements
 
     Button menBtn;
     Button womenBtn;
-
+    Button homeBtn;
+    Button usuariosBtn;
+    Button productsBtn;
+    Button addProductMenuBtn;
     private ArrayList<String> categoryArray;
     private ArrayList<Producto> productoArrayList;
     private ListCategoriedProductsPresenter presenter = new ListCategoriedProductsPresenter(this);
@@ -37,6 +46,9 @@ public class ListCategoriedProductsActivity extends AppCompatActivity implements
 
     private RecyclerView recyclerView;
     private ArrayList<Producto> productoArrayListRecycler;
+
+    private RecyclerView categoryRecyclerView;
+    private ArrayList<Category> categoryArrayListRecycler;
 
 
     public static ListCategoriedProductsActivity getInstance() {
@@ -62,14 +74,41 @@ public class ListCategoriedProductsActivity extends AppCompatActivity implements
         menBtn = findViewById(R.id.menBtn);
         womenBtn = findViewById(R.id.womenBtn);
 
-        // TODO: ARRAYLIST THAT STORES FILTERS
+        homeBtn = findViewById(R.id.homeMenuBtn);
+        usuariosBtn = findViewById(R.id.usersMenuBtn);
+        productsBtn = findViewById(R.id.categoryMenuBtn);
+        addProductMenuBtn = findViewById(R.id.addProductMenuBtn);
+
+        homeBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(this, HomeActivity.class);
+            startActivity(intent);
+        });
+
+        productsBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(this, ListCategoriedProductsActivity.class);
+            startActivity(intent);
+        });
+
+        usuariosBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(this, ListUsersActivity.class);
+            startActivity(intent);
+        });
+
+        addProductMenuBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(this, AddProductActivity.class);
+            startActivity(intent);
+        });
+
+
 
         menBtn.setOnClickListener(v -> {
 
             if (categoryArray.contains("men")){
                 categoryArray.remove("men");
+                menBtn.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.accent_200)));
             }else{
                 categoryArray.add("men");
+                menBtn.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.accent_100)));
             }
             Log.e("initComponents: ", "MY FILTERS FOR PRODUCTS:" + categoryArray );
             producto.setCategoryArrayList(categoryArray);
@@ -79,8 +118,10 @@ public class ListCategoriedProductsActivity extends AppCompatActivity implements
         womenBtn.setOnClickListener(v -> {
             if (categoryArray.contains("women")){
                 categoryArray.remove("women");
+                womenBtn.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.accent_200)));
             }else{
                 categoryArray.add("women");
+                womenBtn.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.accent_100)));
             }
             Log.e("initComponents: ", "MY FILTERS FOR PRODUCTS:" + categoryArray );
             producto.setCategoryArrayList(categoryArray);

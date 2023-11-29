@@ -1,27 +1,18 @@
 package com.example.myapplication.beans;
 
 public class Category {
-    String heading;
-    int titleImage;
+    String categoryName;
 
-    public Category(String heading, int titleImage) {
-        this.heading = heading;
-        this.titleImage = titleImage;
+    public Category(String heading) {
+        this.categoryName = heading;
     }
 
-    public String getHeading() {
-        return heading;
+    public void setCategoryName(String categoryName){
+        this.categoryName = categoryName;
     }
 
-    public void setHeading(String heading) {
-        this.heading = heading;
+    public String getCategoryName() {
+        return categoryName;
     }
 
-    public int getTitleImage() {
-        return titleImage;
-    }
-
-    public void setTitleImage(int titleImage) {
-        this.titleImage = titleImage;
-    }
 }
