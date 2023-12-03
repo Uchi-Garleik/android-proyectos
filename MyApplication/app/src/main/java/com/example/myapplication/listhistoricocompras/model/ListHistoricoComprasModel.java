@@ -1,16 +1,13 @@
-package com.example.myapplication.buyproduct.model;
+package com.example.myapplication.listhistoricocompras.model;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 
-import com.example.myapplication.beans.Producto;
-import com.example.myapplication.buyproduct.ContractBuyProduct;
-import com.example.myapplication.buyproduct.data.DataBuyProduct;
-import com.example.myapplication.buyproduct.presenter.BuyProductPresenter;
-import com.example.myapplication.listcategoriedproducts.ContractListCategoriedProducts;
-import com.example.myapplication.listcategoriedproducts.data.DataListCategoriedProducts;
-import com.example.myapplication.listcategoriedproducts.presenter.ListCategoriedProductsPresenter;
+import com.example.myapplication.beans.HistoricoCompra;
+import com.example.myapplication.listhistoricocompras.ContractHistoricoCompras;
+import com.example.myapplication.listhistoricocompras.data.DataListHistoricoCompras;
+import com.example.myapplication.listhistoricocompras.presenter.ListHistoricoComprasPresenter;
 import com.example.myapplication.utils.ApiService;
 import com.example.myapplication.utils.RetrofitCliente;
 
@@ -21,39 +18,37 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class BuyProductModel implements ContractBuyProduct.Model {
+public class ListHistoricoComprasModel implements ContractHistoricoCompras.Model {
     private SharedPreferences sharedPreferencesUserCFG;
     private Context context;
 
     private static final String IP_BASE = "192.168.1.196:8080";
     //        private static final String IP_BASE = "192.168.104.75:8080";
-    private BuyProductPresenter presenter;
+    private ListHistoricoComprasPresenter presenter;
 
 //    public ListProductsModel(Context context){
 //        this.context = context;
 //    }
 
-    public BuyProductModel(BuyProductPresenter presenter, Context context){
+    public ListHistoricoComprasModel(ListHistoricoComprasPresenter presenter, Context context){
         this.presenter = presenter;
         this.context = context;
     }
 
     @Override
-    public void buyProductApi(Producto producto, ContractBuyProduct.Model.OnBuyProductListener onBuyProductListener) {
+    public void listHistoricoComprasApi(HistoricoCompra historicoCompra, ContractHistoricoCompras.Model.OnListHistoricoComprasListener onListHistoricoComprasListener) {
         ApiService apiService = RetrofitCliente.getClient("http://" + IP_BASE + "/untitled/").create(ApiService.class);
         sharedPreferencesUserCFG = context.getSharedPreferences("com.MyApp.USER_CFG", Context.MODE_PRIVATE);
-        Call<DataBuyProduct> call;
-
-        call = apiService.getDataBuyProduct("VENTAS.ADD", producto.getId(), producto.getIdUser());
-
-
-        call.enqueue(new Callback<DataBuyProduct>() {
+        Call<DataListHistoricoCompras> call;
+        call = apiService.getDataListHistoricoCompras("VENTAS.FINDALL", sharedPreferencesUserCFG.getInt("id",0));
+        call.enqueue(new Callback<DataListHistoricoCompras>() {
             @Override
-            public void onResponse(Call<DataBuyProduct> call, Response<DataBuyProduct> response) {
+            public void onResponse(Call<DataListHistoricoCompras> call, Response<DataListHistoricoCompras> response) {
+                Log.e("listHistoricoComprasApi: ", "voy a matar a un puto profesor" );
                 if (response.isSuccessful()){
-                    DataBuyProduct dataBuyProduct = response.body();
-                    ArrayList<Producto> productsList = dataBuyProduct.getProductsList();
-                    onBuyProductListener.onFinished(productsList);
+                    DataListHistoricoCompras dataListHistoricoCompras = response.body();
+                    ArrayList<HistoricoCompra> historicoComprasProductsList = dataListHistoricoCompras.getHistoricoComprasList();
+                    onListHistoricoComprasListener.onFinished(historicoComprasProductsList);
                 }else{
                     Log.e("Response Error", "HTTP state:38:" + response.code());
                     try{
@@ -66,10 +61,9 @@ public class BuyProductModel implements ContractBuyProduct.Model {
             }
 
             @Override
-            public void onFailure(Call<DataBuyProduct> call, Throwable t) {
+            public void onFailure(Call<DataListHistoricoCompras> call, Throwable t) {
                 Log.e("Response Error", "Error body:50:" + t.getMessage());
             }
         });
-
     }
 }

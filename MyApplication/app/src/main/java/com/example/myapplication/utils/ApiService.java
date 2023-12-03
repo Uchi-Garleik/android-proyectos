@@ -1,8 +1,10 @@
 package com.example.myapplication.utils;
 
 import com.example.myapplication.addproducts.data.DataProducts;
+import com.example.myapplication.buyproduct.data.DataBuyProduct;
 import com.example.myapplication.listUsers.data.DataListUsers;
 import com.example.myapplication.listcategoriedproducts.data.DataListCategoriedProducts;
+import com.example.myapplication.listhistoricocompras.data.DataListHistoricoCompras;
 import com.example.myapplication.listproducts.data.DataListMyProducts;
 import com.example.myapplication.listrateusers.data.DataListRateUsers;
 import com.example.myapplication.loginuser.data.DataUsers;
@@ -40,7 +42,13 @@ public interface ApiService {
                                          @Query("image") String image);
 
     @GET("MyServlet")
+    Call<DataListHistoricoCompras> getDataListHistoricoCompras(@Query("ACTION") String action, @Query("idUser") int idUser);
+
+    @GET("MyServlet")
     Call<DataRateUser> getDataRateUser(@Query("ACTION") String action, @Query("idRatedUser") int idRatedUser, @Query("idRatingUser") int idRatingUser, @Query("rating") double rating);
+
+    @GET("MyServlet")
+    Call<DataBuyProduct> getDataBuyProduct(@Query("ACTION") String action, @Query("idProducto") int idProducto, @Query("idUser") int idUser);
 
     @GET("MyServlet")
     Call<DataListRateUsers> getDataListRateUsers(@Query("ACTION") String action, @Query("idUser") int idUser);
@@ -61,7 +69,7 @@ public interface ApiService {
     Call<DataListMyProducts> getDataListProducts(@Query("ACTION") String action, @Query("idUser") int idUser);
 
     @GET("MyServlet")
-    Call<DataListCategoriedProducts> getDataListCategoriedProducts(@Query("ACTION") String action, @Query("categoria") String categoria);
+    Call<DataListCategoriedProducts> getDataListCategoriedProducts(@Query("ACTION") String action, @Query("categoria") String categoria, @Query("idUser") int idUser);
 
     @GET("MyServlet")
     Call<DataListUsers> getDataListUsers(@Query("ACTION") String action);

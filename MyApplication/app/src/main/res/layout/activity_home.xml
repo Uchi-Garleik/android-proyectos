@@ -41,19 +41,13 @@
                     android:textSize="27dp" />
             </LinearLayout>
 
-            <EditText
-                android:id="@+id/editTextPassword"
+
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/searchProduc2t"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:layout_marginBottom="30dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/button_gray_bg"
-                android:drawableLeft="@drawable/baseline_search_24"
-                android:drawablePadding="5dp"
-                android:hint="¿Buscando algo?"
-                android:inputType="textPassword" />
+                android:layout_height="match_parent"
+                app:queryHint="Search Product"
+                app:iconifiedByDefault="false"/>
 
         </LinearLayout>
 
@@ -69,6 +63,7 @@
             app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
 
 
+            <!--  TODO: REMOVE CONSTRAINT BOTTOMS -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/productsColumn"
                 android:layout_width="0dp"
@@ -94,7 +89,8 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="40dp"
+                android:layout_weight="1"
+                android:gravity="center"
                 android:orientation="vertical">
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -107,8 +103,10 @@
 
             <LinearLayout
                 android:layout_width="wrap_content"
+                android:gravity="center"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="40dp"
+                android:layout_weight="1"
+
                 android:orientation="vertical">
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -122,7 +120,9 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="40dp"
+                android:gravity="center"
+                android:layout_weight="1"
+
                 android:orientation="vertical">
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/addProductMenuBtn"
@@ -134,7 +134,8 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="40dp"
+                android:gravity="center"
+                android:layout_weight="1"
                 android:orientation="vertical">
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/basketMenuBtn"
@@ -146,6 +147,8 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_weight="1"
                 android:orientation="vertical">
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/usersMenuBtn"

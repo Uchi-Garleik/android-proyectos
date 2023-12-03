@@ -19,6 +19,7 @@ import com.example.myapplication.addproducts.view.AddProductActivity;
 import com.example.myapplication.beans.Producto;
 import com.example.myapplication.buyproduct.view.BuyProductActivity;
 import com.example.myapplication.listcategoriedproducts.view.ListCategoriedProductsActivity;
+import com.example.myapplication.listhistoricocompras.view.ListHistoricoComprasActivity;
 import com.example.myapplication.listproducts.ContractListMyProducts;
 import com.example.myapplication.listproducts.presenter.ListMyMyProductsPresenter;
 import com.example.myapplication.listrateusers.view.ListUsersActivity;
@@ -34,6 +35,7 @@ public class HomeActivity extends AppCompatActivity implements ContractListMyPro
     Button usuariosBtn;
     Button productsBtn;
     Button addProductMenuBtn;
+    Button historicoComprasBtn;
 
     private RecyclerView recyclerView;
 
@@ -61,10 +63,16 @@ public class HomeActivity extends AppCompatActivity implements ContractListMyPro
         Producto producto = new Producto();
         presenter.listMyProducts(producto);
 
+        historicoComprasBtn = findViewById(R.id.basketMenuBtn);
         homeBtn = findViewById(R.id.homeMenuBtn);
         usuariosBtn = findViewById(R.id.usersMenuBtn);
         productsBtn = findViewById(R.id.categoryMenuBtn);
         addProductMenuBtn = findViewById(R.id.addProductMenuBtn);
+
+        historicoComprasBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(this, ListHistoricoComprasActivity.class);
+            startActivity(intent);
+        });
 
         productsBtn.setOnClickListener(v -> {
             Intent intent = new Intent(this, ListCategoriedProductsActivity.class);

@@ -1,8 +1,10 @@
 package com.example.myapplication.beans;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Producto {
+    private int id;
     private String nombre;
     private String descripcion;
     private String categoria;
@@ -42,17 +44,28 @@ public class Producto {
     @Override
     public String toString() {
         return "Producto{" +
-                "nombre='" + nombre + '\'' +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
                 ", descripcion='" + descripcion + '\'' +
                 ", categoria='" + categoria + '\'' +
                 ", marca='" + marca + '\'' +
                 ", talla='" + talla + '\'' +
                 ", estado='" + estado + '\'' +
+                ", categoryArrayList=" + categoryArrayList +
                 ", precio=" + precio +
                 ", moneda='" + moneda + '\'' +
+                ", image=" + Arrays.toString(image) +
                 ", imagePath='" + imagePath + '\'' +
                 ", idUser=" + idUser +
                 '}';
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getImagePath() {

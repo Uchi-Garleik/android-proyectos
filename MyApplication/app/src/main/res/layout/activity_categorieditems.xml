@@ -12,21 +12,19 @@
         android:orientation="vertical">
 
         <LinearLayout
-            android:id="@+id/linearLayout4"
+            android:id="@+id/linearLayout91"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingLeft="30dp"
-            android:paddingTop="30dp"
-            android:paddingEnd="30dp"
-            android:paddingRight="30dp"
-            android:paddingBottom="30dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
                 android:id="@+id/linearLayout3"
+                android:paddingTop="10dp"
+                android:background="@color/primary_100"
+                android:paddingBottom="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -34,6 +32,7 @@
                 <TextView
                     android:id="@+id/textView13"
                     style="@style/TextTitle"
+                    android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -41,7 +40,12 @@
                     android:text="SilkStreet"
                     android:textSize="27dp" />
             </LinearLayout>
-
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/searchProduct"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:queryHint="Search Product"
+                app:iconifiedByDefault="false"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -78,33 +82,29 @@
         </LinearLayout>
 
 
-
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayoutProducts"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:background="@drawable/background_gray"
             android:paddingTop="20dp"
             app:layout_constraintBottom_toTopOf="@+id/BottomMenu"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout91">
 
             <!-- Change to wrap_content -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/productsColumn"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                tools:listitem="@layout/item_listproduct"
+                android:orientation="horizontal"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
-                android:background="@drawable/background_gray"
-                android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                tools:listitem="@layout/item_listproduct">
 
 
             </androidx.recyclerview.widget.RecyclerView>

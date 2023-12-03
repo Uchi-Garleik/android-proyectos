@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -26,13 +27,17 @@ import com.example.myapplication.listcategoriedproducts.presenter.ListCategoried
 import com.example.myapplication.listproducts.view.HomeActivity;
 import com.example.myapplication.listrateusers.view.ListUsersActivity;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ListCategoriedProductsActivity extends AppCompatActivity implements ContractListCategoriedProducts.View, RecyclerViewInterface {
 
 
     private SharedPreferences sharedPreferences;
 
+    private SearchView searchView;
+    ProductsAdapter productsAdapter;
     Button menBtn;
     Button womenBtn;
     Button homeBtn;
@@ -68,6 +73,21 @@ public class ListCategoriedProductsActivity extends AppCompatActivity implements
     }
 
     private void initComponents() {
+        searchView = findViewById(R.id.searchProduct);
+        searchView.clearFocus();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filterList(newText);
+                return false;
+            }
+        });
+
         categoryArray = new ArrayList<>();
         Producto producto = new Producto();
         producto.setCategoria("");
@@ -131,6 +151,22 @@ public class ListCategoriedProductsActivity extends AppCompatActivity implements
         presenter.listCategoriedProducts(producto);
     }
 
+    private void filterList(String newText) {
+        ArrayList<Producto> filterList = new ArrayList<>();
+        for (Producto producto : productoArrayListRecycler){
+            if (producto.getNombre().toLowerCase().contains(newText.toLowerCase())){
+                filterList.add(producto);
+            }
+        }
+
+        if (filterList.isEmpty()){
+            Toast.makeText(this, "No", Toast.LENGTH_SHORT).show();
+        }else{
+            productsAdapter.setFilteredList(filterList);
+        }
+
+    }
+
     @Override
     public void successListCategoriedProducts(ArrayList<Producto> productsList) {
         Log.e("successListCategoriedProducts: ", "MY ARRAY:" + productsList );
@@ -139,7 +175,7 @@ public class ListCategoriedProductsActivity extends AppCompatActivity implements
         recyclerView = findViewById(R.id.productsColumn);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(this,2));
-        ProductsAdapter productsAdapter = new ProductsAdapter(this, productoArrayListRecycler, this);
+        productsAdapter = new ProductsAdapter(this, productoArrayListRecycler, this);
         recyclerView.setAdapter(productsAdapter);
         productsAdapter.notifyDataSetChanged();
     }
@@ -161,9 +197,18 @@ public class ListCategoriedProductsActivity extends AppCompatActivity implements
     @Override
     public void OnItemClick(int position) {
         Intent intent = new Intent(this, BuyProductActivity.class);
+        intent.putExtra("id",productoArrayListRecycler.get(position).getId());
         intent.putExtra("nombre", productoArrayListRecycler.get(position).getNombre());
-        intent.putExtra("descripcion", productoArrayListRecycler.get(position).getNombre());
+        intent.putExtra("descripcion", productoArrayListRecycler.get(position).getDescripcion());
         intent.putExtra("imagePath", productoArrayListRecycler.get(position).getImagePath());
+        intent.putExtra("precio", productoArrayListRecycler.get(position).getPrecio());
+        intent.putExtra("moneda",productoArrayListRecycler.get(position).getMoneda());
+        intent.putExtra("estado",productoArrayListRecycler.get(position).getEstado());
+        intent.putExtra("marca",productoArrayListRecycler.get(position).getMarca());
+        intent.putExtra("talla",productoArrayListRecycler.get(position).getTalla());
         startActivity(intent);
+        Toast.makeText(this, productoArrayListRecycler.get(position).toString(), Toast.LENGTH_SHORT).show();
+        Log.d("ProductInfo: ", "" + productoArrayListRecycler.get(position).toString());
     }
 }
+

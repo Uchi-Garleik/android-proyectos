@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:background="@drawable/historico_compra_bg"
+        android:layout_height="120dp"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingRight="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/historicoImage"
+            app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Large"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/neko"
+            android:scaleType="centerCrop"/>
+
+        <LinearLayout
+            android:layout_marginLeft="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/historicoTitulo"
+                android:layout_width="wrap_content"
+                style="@style/TextTitle"
+                android:textSize="20sp"
+                android:layout_height="wrap_content"
+                android:text="Chaqueta verde turquesa con camisa amarilla"/>
+            <TextView
+                android:id="@+id/historicoFecha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2023/01/12"/>
+            <TextView
+                android:id="@+id/historicoPrecio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="500.00€"/>
+
+
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
