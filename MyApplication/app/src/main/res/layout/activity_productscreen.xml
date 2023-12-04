@@ -52,6 +52,7 @@
             android:id="@+id/productScreenDesc"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:textColor="@color/black"
             android:text="Zapatillas un poco usadas, estan manchadas por debajo.\n Se puede negociar precio."
             app:layout_constraintStart_toStartOf="@+id/productScreenTitle"
             app:layout_constraintTop_toBottomOf="@+id/productScreenTalla" />
@@ -60,6 +61,7 @@
             android:id="@+id/productScreenPrecio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/black"
             android:text="Precio"
             app:layout_constraintStart_toStartOf="@+id/productScreenTitle"
             app:layout_constraintTop_toBottomOf="@+id/productScreenTitle" />
@@ -68,6 +70,7 @@
             android:id="@+id/productScreenTalla"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/black"
             android:text="Talla"
             app:layout_constraintStart_toStartOf="@+id/productScreenTitle"
             app:layout_constraintTop_toBottomOf="@+id/productScreenPrecio" />
@@ -75,6 +78,8 @@
         <TextView
             android:id="@+id/productScreenMarca"
             android:layout_width="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/black"
             android:layout_height="wrap_content"
             android:text="Marca"
             app:layout_constraintStart_toEndOf="@+id/productScreenTalla"
@@ -94,30 +99,21 @@
 
     <TextView
         android:id="@+id/productScreenEstado"
-        android:layout_width="wrap_content"
+        android:layout_width="70dp"
+        android:gravity="center"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="10dp"
+        android:background="@drawable/button_bg"
+        android:textColor="@color/white"
+        android:padding="5dp"
         android:text="Estado"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="@+id/productScreenImage"
         app:layout_constraintEnd_toEndOf="parent" />
 
 
-    <!-- <LinearLayout
-        android:id="@+id/linearLayout5"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnBack"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@drawable/back_arrow" />
-    </LinearLayout> -->
 
 
 

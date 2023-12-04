@@ -24,6 +24,7 @@ import com.example.myapplication.beans.Producto;
 import com.example.myapplication.buyproduct.view.BuyProductActivity;
 import com.example.myapplication.listcategoriedproducts.ContractListCategoriedProducts;
 import com.example.myapplication.listcategoriedproducts.presenter.ListCategoriedProductsPresenter;
+import com.example.myapplication.listhistoricocompras.view.ListHistoricoComprasActivity;
 import com.example.myapplication.listproducts.view.HomeActivity;
 import com.example.myapplication.listrateusers.view.ListUsersActivity;
 
@@ -44,6 +45,7 @@ public class ListCategoriedProductsActivity extends AppCompatActivity implements
     Button usuariosBtn;
     Button productsBtn;
     Button addProductMenuBtn;
+    Button historicoComprasBtn;
     private ArrayList<String> categoryArray;
     private ArrayList<Producto> productoArrayList;
     private ListCategoriedProductsPresenter presenter = new ListCategoriedProductsPresenter(this);
@@ -61,6 +63,12 @@ public class ListCategoriedProductsActivity extends AppCompatActivity implements
             listCategoriedProductsActivity = new ListCategoriedProductsActivity();
         }
         return listCategoriedProductsActivity;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initComponents();
     }
 
     @Override
@@ -94,13 +102,20 @@ public class ListCategoriedProductsActivity extends AppCompatActivity implements
         menBtn = findViewById(R.id.menBtn);
         womenBtn = findViewById(R.id.womenBtn);
 
+        historicoComprasBtn = findViewById(R.id.basketMenuBtn);
         homeBtn = findViewById(R.id.homeMenuBtn);
         usuariosBtn = findViewById(R.id.usersMenuBtn);
         productsBtn = findViewById(R.id.categoryMenuBtn);
         addProductMenuBtn = findViewById(R.id.addProductMenuBtn);
 
+        homeBtn = findViewById(R.id.homeMenuBtn);
         homeBtn.setOnClickListener(v -> {
             Intent intent = new Intent(this, HomeActivity.class);
+            startActivity(intent);
+        });
+
+        historicoComprasBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(this, ListHistoricoComprasActivity.class);
             startActivity(intent);
         });
 
@@ -125,10 +140,10 @@ public class ListCategoriedProductsActivity extends AppCompatActivity implements
 
             if (categoryArray.contains("men")){
                 categoryArray.remove("men");
-                menBtn.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.accent_200)));
+                menBtn.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.bg_300)));
             }else{
                 categoryArray.add("men");
-                menBtn.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.accent_100)));
+                menBtn.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.primary_100)));
             }
             Log.e("initComponents: ", "MY FILTERS FOR PRODUCTS:" + categoryArray );
             producto.setCategoryArrayList(categoryArray);
@@ -138,10 +153,10 @@ public class ListCategoriedProductsActivity extends AppCompatActivity implements
         womenBtn.setOnClickListener(v -> {
             if (categoryArray.contains("women")){
                 categoryArray.remove("women");
-                womenBtn.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.accent_200)));
+                womenBtn.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.bg_300)));
             }else{
                 categoryArray.add("women");
-                womenBtn.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.accent_100)));
+                womenBtn.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.primary_100)));
             }
             Log.e("initComponents: ", "MY FILTERS FOR PRODUCTS:" + categoryArray );
             producto.setCategoryArrayList(categoryArray);

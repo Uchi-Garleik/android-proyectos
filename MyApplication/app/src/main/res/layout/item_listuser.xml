@@ -3,29 +3,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
+    android:layout_height="wrap_content"
     android:paddingLeft="10dp"
-    android:background="@drawable/user_listing"
+    android:background="@drawable/list_users_background"
     android:paddingTop="10dp"
     android:paddingRight="10dp"
     android:paddingBottom="10dp"
     android:layout_marginBottom="10dp"
+    android:backgroundTint="@color/bg_200"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/userImage"
-        android:layout_width="100dp"
-        android:layout_height="match_parent"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:scaleType="centerCrop"
         android:src="@drawable/neko"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Large" />
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full" />
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:paddingLeft="10dp"
@@ -41,23 +42,20 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="UCHIGATANA"
-            android:textColor="@color/white" />
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
 
         <RatingBar
-            style="@style/Widget.AppCompat.RatingBar.Indicator"
+            android:isIndicator="true"
             android:id="@+id/userRating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:numStars="5"
-            android:stepSize="1" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="80dp"
-            android:layout_height="40dp"
-            android:background="@color/primary_200"
-            android:textColor="@color/white"
-            android:text="Rate"/>
+            android:layout_weight="1" />
 
     </LinearLayout>
+
+
+
+
 
 </LinearLayout>

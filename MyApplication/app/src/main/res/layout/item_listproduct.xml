@@ -4,24 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="170dp"
     android:layout_height="wrap_content"
+    android:background="@drawable/productbackgroundcolor"
     android:layout_marginBottom="10dp">
 
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/productImage"
         android:layout_width="match_parent"
-        android:layout_height="140dp"
+        android:layout_height="170dp"
+        android:background="@color/transparent"
+        app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Large"
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/neko" />
+        app:srcCompat="@drawable/produ" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="90dp"
         android:orientation="vertical"
         android:padding="11dp"
-        android:background="@drawable/productbackgroundcolor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/productImage">
@@ -30,11 +32,11 @@
             android:id="@+id/productTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             style="@style/TextTitle"
             android:textSize="15dp"
             android:maxLength="33"
-            android:text="Carro cocina mueble auxiliar consola"
+            android:text="Product 6"
             app:layout_constraintStart_toStartOf="@+id/productImage"
             app:layout_constraintTop_toBottomOf="@+id/productImage" />
 
@@ -44,7 +46,7 @@
             android:layout_height="wrap_content"
             android:textSize="13dp"
             style="@style/TextSubtitle"
-            android:textColor="@color/accent_100"
+            android:textColor="@color/black"
             android:layout_marginTop="3dp"
             android:text="60,00€"
             android:textStyle="bold"
@@ -58,20 +60,9 @@
             android:layout_height="wrap_content"
             android:textSize="13dp"
             android:text="Nike"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/productPrice" />
-
-        <TextView
-            android:id="@+id/productTalla"
-            style="@style/TextSubtitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="13dp"
-            android:text="38"
-            android:textColor="@color/white"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/productMarca" />
 
     </LinearLayout>
 

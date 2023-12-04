@@ -44,7 +44,6 @@ public class ListHistoricoComprasModel implements ContractHistoricoCompras.Model
         call.enqueue(new Callback<DataListHistoricoCompras>() {
             @Override
             public void onResponse(Call<DataListHistoricoCompras> call, Response<DataListHistoricoCompras> response) {
-                Log.e("listHistoricoComprasApi: ", "voy a matar a un puto profesor" );
                 if (response.isSuccessful()){
                     DataListHistoricoCompras dataListHistoricoCompras = response.body();
                     ArrayList<HistoricoCompra> historicoComprasProductsList = dataListHistoricoCompras.getHistoricoComprasList();

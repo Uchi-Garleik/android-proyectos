@@ -1,10 +1,12 @@
 package com.example.myapplication.buyproduct.view;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +15,7 @@ import com.example.myapplication.R;
 import com.example.myapplication.beans.Producto;
 import com.example.myapplication.buyproduct.ContractBuyProduct;
 import com.example.myapplication.buyproduct.presenter.BuyProductPresenter;
+import com.example.myapplication.listcategoriedproducts.view.ListCategoriedProductsActivity;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.squareup.picasso.Picasso;
 
@@ -31,6 +34,9 @@ public class BuyProductActivity extends AppCompatActivity implements ContractBuy
     private int idUsuario;
     private SharedPreferences sharedPreferences;
     private Button comprarButton;
+
+    private Button backBtn;
+
 
     private BuyProductPresenter presenter = new BuyProductPresenter(this);
     private static BuyProductActivity buyProductActivity = null;
@@ -52,6 +58,11 @@ public class BuyProductActivity extends AppCompatActivity implements ContractBuy
     }
 
     private void initComponents() {
+        backBtn = findViewById(R.id.btnBack);
+        backBtn.setOnClickListener(v->{
+            Intent intent = new Intent(this, ListCategoriedProductsActivity.class);
+            startActivity(intent);
+        });
 
         sharedPreferences = getSharedPreferences("com.MyApp.USER_CFG",MODE_PRIVATE);
         idUsuario = sharedPreferences.getInt("id",0);
@@ -86,7 +97,9 @@ public class BuyProductActivity extends AppCompatActivity implements ContractBuy
             producto.setId(idProducto);
             producto.setIdUser(idUsuario);
             presenter.buyProduct(producto);
-
+            Toast.makeText(this, "Producto Comprado", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, ListCategoriedProductsActivity.class);
+            startActivity(intent);
         });
 
     }

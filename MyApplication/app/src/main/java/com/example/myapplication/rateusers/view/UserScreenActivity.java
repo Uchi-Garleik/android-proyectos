@@ -1,6 +1,7 @@
 package com.example.myapplication.rateusers.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,12 +16,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.beans.Usuario;
 import com.example.myapplication.listcategoriedproducts.view.ListCategoriedProductsActivity;
+import com.example.myapplication.listproducts.view.HomeActivity;
+import com.example.myapplication.listrateusers.view.ListUsersActivity;
 import com.example.myapplication.loginuser.presenter.LoginUserPresenter;
 import com.example.myapplication.loginuser.view.LoginUserActivity;
 import com.example.myapplication.rateusers.ContractRateUser;
 import com.example.myapplication.rateusers.presenter.RateUserPresenter;
 
 public class UserScreenActivity extends AppCompatActivity implements ContractRateUser.View {
+
+    Button btnBack;
 
     int idUserScreenValue;
     String userNameScreenValue;
@@ -47,6 +52,12 @@ public class UserScreenActivity extends AppCompatActivity implements ContractRat
     }
 
     private void initComponents() {
+        btnBack = findViewById(R.id.btnBack);
+        btnBack.setOnClickListener(v->{
+            Intent intent = new Intent(this, ListUsersActivity.class);
+            startActivity(intent);
+        });
+
         SharedPreferences sharedPreferences = getSharedPreferences("com.MyApp.USER_CFG", MODE_PRIVATE);
         idUserScreenValue = getIntent().getIntExtra("id",0);
         userNameScreenValue = getIntent().getStringExtra("username");

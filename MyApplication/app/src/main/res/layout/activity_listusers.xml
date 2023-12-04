@@ -17,11 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingLeft="30dp"
-            android:paddingTop="30dp"
-            android:paddingEnd="30dp"
-            android:paddingRight="30dp"
-            android:paddingBottom="30dp"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -30,11 +26,15 @@
                 android:id="@+id/linearLayout3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:background="@color/primary_100"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/textView13"
                     style="@style/TextTitle"
+                    android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -42,25 +42,38 @@
                     android:text="SilkStreet"
                     android:textSize="27dp" />
             </LinearLayout>
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/topFavouriteUsers"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/button_bg"
-                android:layout_marginTop="10dp"
-                android:textColor="@color/white"
-                android:textSize="18dp"
-                android:text="TOP 10 USUARIOS POR RATING"/>
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/topHighestSellsUsers"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/button_bg"
-                android:layout_marginTop="10dp"
-                android:textColor="@color/white"
-                android:textSize="18dp"
-                android:text="TOP USUARIOS POR VENTA"/>
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/topFavouriteUsers"
+                    android:layout_width="150dp"
+                    android:layout_height="60dp"
+                    android:layout_marginRight="20dp"
+                    android:padding="5dp"
+                    android:background="@drawable/button_bg"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/white"
+                    android:textSize="15dp"
+                    android:text="TOP 10 USUARIOS POR RATING"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/topHighestSellsUsers"
+                    android:layout_width="150dp"
+                    android:layout_height="60dp"
+                    android:padding="5dp"
+                    android:background="@drawable/button_bg"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/white"
+                    android:textSize="15dp"
+                    android:text="TOP USUARIOS POR VENTA"/>
+
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -71,7 +84,6 @@
             android:id="@+id/constraintLayout"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:background="@drawable/background_gray"
             android:paddingTop="20dp"
             app:layout_constraintBottom_toTopOf="@+id/BottomMenu"
             app:layout_constraintEnd_toEndOf="parent"
@@ -84,10 +96,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 tools:listitem="@layout/item_listuser"
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp"
-                android:background="@drawable/background_gray"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
                 android:orientation="vertical"
+                android:paddingBottom="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -105,7 +117,7 @@
             android:layout_height="50dp"
             android:orientation="horizontal"
             android:gravity="center"
-            android:background="@color/primary_300"
+            android:background="@color/primary_100"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
@@ -113,7 +125,8 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="40dp"
+                android:layout_weight="1"
+                android:gravity="center"
                 android:orientation="vertical">
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -121,18 +134,20 @@
                     android:layout_width="32dp"
                     android:layout_height="32dp"
                     android:background="@drawable/baseline_home_24"
-                    android:backgroundTint="@color/black" />
+                    android:backgroundTint="@color/white" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
+                android:gravity="center"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="40dp"
+                android:layout_weight="1"
+
                 android:orientation="vertical">
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/categoryMenuBtn"
-                    android:backgroundTint="@color/black"
+                    android:backgroundTint="@color/white"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
                     android:background="@drawable/baseline_manage_search_24" />
@@ -141,11 +156,14 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="40dp"
+                android:gravity="center"
+                android:layout_weight="1"
+
                 android:orientation="vertical">
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/addProductMenuBtn"
                     android:layout_width="32dp"
+                    android:backgroundTint="@color/white"
                     android:layout_height="32dp"
                     android:background="@drawable/baseline_add_circle_outline_24"/>
             </LinearLayout>
@@ -153,11 +171,13 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="40dp"
+                android:gravity="center"
+                android:layout_weight="1"
                 android:orientation="vertical">
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/basketMenuBtn"
                     android:layout_width="32dp"
+                    android:backgroundTint="@color/white"
                     android:layout_height="32dp"
                     android:background="@drawable/baseline_shopping_basket_24"/>
             </LinearLayout>
@@ -165,10 +185,12 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_weight="1"
                 android:orientation="vertical">
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/usersMenuBtn"
-                    android:backgroundTint="@color/primary_100"
+                    android:backgroundTint="@color/accent_100"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
                     android:background="@drawable/baseline_person_24"/>

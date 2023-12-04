@@ -76,7 +76,6 @@ public class HomeActivity extends AppCompatActivity implements ContractListMyPro
 
         productsBtn.setOnClickListener(v -> {
             Intent intent = new Intent(this, ListCategoriedProductsActivity.class);
-            intent.putExtra("categoria","pantal");
             startActivity(intent);
         });
 

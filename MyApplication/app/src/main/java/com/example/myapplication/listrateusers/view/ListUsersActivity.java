@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.addproducts.view.AddProductActivity;
 import com.example.myapplication.listcategoriedproducts.view.ListCategoriedProductsActivity;
+import com.example.myapplication.listhistoricocompras.view.ListHistoricoComprasActivity;
 import com.example.myapplication.listproducts.view.HomeActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.RecyclerViewInterface;
@@ -38,10 +39,10 @@ public class ListUsersActivity extends AppCompatActivity implements ContractList
     Button usuariosBtn;
     Button productsBtn;
     Button addProductMenuBtn;
+    Button historicoComprasBtn;
     private Button topFavouriteUsersButton;
     private Button topHighestSellsButton;
 
-    private Button homeButton;
 
     private RatingBar ratingBar;
     private String[] usuariosHeading;
@@ -82,13 +83,14 @@ public class ListUsersActivity extends AppCompatActivity implements ContractList
         editor2.apply();
 
 
+        historicoComprasBtn = findViewById(R.id.basketMenuBtn);
         homeBtn = findViewById(R.id.homeMenuBtn);
         usuariosBtn = findViewById(R.id.usersMenuBtn);
         productsBtn = findViewById(R.id.categoryMenuBtn);
         addProductMenuBtn = findViewById(R.id.addProductMenuBtn);
 
-        homeBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(this, HomeActivity.class);
+        historicoComprasBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(this, ListHistoricoComprasActivity.class);
             startActivity(intent);
         });
 
@@ -135,8 +137,8 @@ public class ListUsersActivity extends AppCompatActivity implements ContractList
 
         presenter.listRateUsers(usuario);
 
-        homeButton = findViewById(R.id.homeMenuBtn);
-        homeButton.setOnClickListener(v -> {
+        homeBtn = findViewById(R.id.homeMenuBtn);
+        homeBtn.setOnClickListener(v -> {
             Intent intent = new Intent(this, HomeActivity.class);
             startActivity(intent);
         });
