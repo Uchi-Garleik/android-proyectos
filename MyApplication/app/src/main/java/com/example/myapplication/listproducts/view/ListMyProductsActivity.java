@@ -100,8 +100,8 @@ public class ListMyProductsActivity extends AppCompatActivity implements Contrac
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
 
             String uniqueID = UUID.randomUUID().toString();
-            Picasso.get().load("http://192.168.1.196:8080"+producto.getImagePath()+"?" + uniqueID).into(imageView);
-//            Picasso.get().load("http://192.168.104.75:8080"+producto.getImagePath()+"?" + uniqueID).into(imageView);
+//            Picasso.get().load("http://192.168.1.196:8080"+producto.getImagePath()+"?" + uniqueID).into(imageView);
+            Picasso.get().load("http://192.168.104.75:8080"+producto.getImagePath()+"?" + uniqueID).into(imageView);
 //            Picasso.get().load(producto.getImagePath()+"?" + uniqueID).into(imageView);
             Log.e("successListMyProducts: ", producto.getImagePath() );
             TextView textView = new TextView(this);
