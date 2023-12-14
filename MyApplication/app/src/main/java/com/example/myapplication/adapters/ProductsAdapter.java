@@ -52,12 +52,13 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
     public void onBindViewHolder(@NonNull ProductsAdapter.ProductsViewHolder holder, int position) {
         Producto producto = productoArrayList.get(position);
         Log.e("onBindViewHolder: ", "Producto:" + producto );
-        holder.productPrice.setText(String.valueOf(producto.getPrecio()));
+        holder.productPrice.setText(String.valueOf(producto.getPrecio())+"€");
         holder.productHeading.setText(producto.getNombre());
+        holder.productMarca.setText(producto.getMarca());
         String uniqueID = UUID.randomUUID().toString();
-//        Picasso.get().load("http://192.168.1.196:8080"+producto.getImagePath()+"?" + uniqueID).into(holder.productImage);
-        Log.e("onBindViewHolder: ", "http://192.168.104.75:8080" + producto.getImagePath()+"?" + uniqueID);
-        Picasso.get().load("http://192.168.104.75:8080"+producto.getImagePath()+"?" + uniqueID).into(holder.productImage);
+        Picasso.get().load("http://192.168.1.196:8080"+producto.getImagePath()+"?" + uniqueID).into(holder.productImage);
+//        Log.e("onBindViewHolder: ", "http://192.168.104.75:8080" + producto.getImagePath()+"?" + uniqueID);
+//        Picasso.get().load("http://192.168.104.75:8080"+producto.getImagePath()+"?" + uniqueID).into(holder.productImage);
     }
 
     @Override
@@ -69,6 +70,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
         ShapeableImageView productImage;
         TextView productHeading;
         TextView productPrice;
+        TextView productMarca;
         public ProductsViewHolder(@NonNull View itemView, RecyclerViewInterface recyclerViewInterface) {
             super(itemView);
 
@@ -79,6 +81,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
             productImage.setShapeAppearanceModel(shapeAppearanceModel);
             productHeading = itemView.findViewById(R.id.productTitle);
             productPrice = itemView.findViewById(R.id.productPrice);
+            productMarca = itemView.findViewById(R.id.productMarca);
             Log.e("ProductsViewHolder: ", "PRODUCTHEADING: " + productHeading );
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

@@ -56,18 +56,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/userStreet"
-                style="@style/TextSubtitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/baseline_person_24"
-                android:text="28005, Madrid"
-                android:textColor="@color/black"
-                android:textSize="14dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/userNameTitle" />
-
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/userIconImage"

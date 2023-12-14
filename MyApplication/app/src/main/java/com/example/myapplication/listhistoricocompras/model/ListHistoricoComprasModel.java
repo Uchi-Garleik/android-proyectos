@@ -22,8 +22,8 @@ public class ListHistoricoComprasModel implements ContractHistoricoCompras.Model
     private SharedPreferences sharedPreferencesUserCFG;
     private Context context;
 
-//    private static final String IP_BASE = "192.168.1.196:8080";
-            private static final String IP_BASE = "192.168.104.75:8080";
+    private static final String IP_BASE = "192.168.1.196:8080";
+//            private static final String IP_BASE = "192.168.104.75:8080";
     private ListHistoricoComprasPresenter presenter;
 
 //    public ListProductsModel(Context context){
@@ -47,6 +47,7 @@ public class ListHistoricoComprasModel implements ContractHistoricoCompras.Model
                 if (response.isSuccessful()){
                     DataListHistoricoCompras dataListHistoricoCompras = response.body();
                     ArrayList<HistoricoCompra> historicoComprasProductsList = dataListHistoricoCompras.getHistoricoComprasList();
+                    Log.e("historicoCompras!!!!!!!!: ", historicoComprasProductsList.toString() );
                     onListHistoricoComprasListener.onFinished(historicoComprasProductsList);
                 }else{
                     Log.e("Response Error", "HTTP state:38:" + response.code());

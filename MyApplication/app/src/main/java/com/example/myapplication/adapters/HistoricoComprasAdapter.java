@@ -45,10 +45,13 @@ public class HistoricoComprasAdapter extends RecyclerView.Adapter<HistoricoCompr
     @Override
     public void onBindViewHolder(@NonNull HistoricoComprasAdapter.HistoricoComprasViewHolder holder, int position) {
         HistoricoCompra historicoCompra = historicoCompraArrayList.get(position);
+        Log.e("historicoCompras_V4: ", historicoCompraArrayList.toString() );
         Log.e(TAG, "onCreateViewHolder: " + historicoCompra.toString() );
         holder.historicoTitle.setText(historicoCompra.getNombreProducto());
         holder.historicoFecha.setText(historicoCompra.getFechaCompra());
-        holder.historicoPrecio.setText(String.valueOf(historicoCompra.getPrecioCompra()));
+        String uniqueID = UUID.randomUUID().toString();
+        Picasso.get().load("http://192.168.1.196:8080"+historicoCompra.getImagePath()+"?" + uniqueID).into(holder.historicoImage);
+        holder.historicoPrecio.setText(String.valueOf(historicoCompra.getPrecioCompra()) + "€");
     }
 
     @Override

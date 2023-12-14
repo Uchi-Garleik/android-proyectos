@@ -3,27 +3,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="80dp"
     android:paddingLeft="10dp"
     android:background="@drawable/list_users_background"
     android:paddingTop="10dp"
     android:paddingRight="10dp"
     android:paddingBottom="10dp"
-    android:layout_marginBottom="10dp"
-    android:backgroundTint="@color/bg_200"
+    android:layout_marginBottom="20dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/userImage"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:scaleType="centerCrop"
         android:src="@drawable/neko"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full" />
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Medium" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -41,15 +40,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="UCHIGATANA"
+            android:text="Uchigatana"
+            android:textSize="20sp"
             android:textColor="@color/black"
+            android:layout_marginBottom="3dp"
             android:textStyle="bold"/>
 
         <RatingBar
             android:isIndicator="true"
             android:id="@+id/userRating"
+
+            style="@style/Widget.AppCompat.RatingBar.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:progressTint="@color/accent_100"
             android:layout_weight="1" />
 
     </LinearLayout>

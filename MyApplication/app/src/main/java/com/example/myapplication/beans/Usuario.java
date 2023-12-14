@@ -8,6 +8,17 @@ public class Usuario {
     private String password;
     private int image;
     private double rating;
+    private String imagePath;
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+
+
 
     public double getRating() {
         return rating;
@@ -26,7 +37,7 @@ public class Usuario {
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", image=" + image +
+                ", imagePath='" + imagePath +'\'' +
                 ", rating=" + rating +
                 '}';
     }

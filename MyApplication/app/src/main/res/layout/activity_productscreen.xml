@@ -22,7 +22,7 @@
         android:layout_height="40dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        android:background="@drawable/back_arrow"
+        android:background="@drawable/twotone_arrow_circle_left_24"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -41,57 +41,103 @@
         <TextView
             android:id="@+id/productScreenTitle"
             style="@style/TextTitle"
-            android:layout_width="200dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Titulo"
-            android:textSize="24dp"
+            android:textSize="34dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+
+        <TextView
+            android:id="@+id/productScreenTitle2"
+            style="@style/TextTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Descripcion"
+            android:textSize="24dp"
+            app:layout_constraintTop_toBottomOf="@+id/productScreenMarca2" />
+
         <TextView
             android:id="@+id/productScreenDesc"
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
             android:text="Zapatillas un poco usadas, estan manchadas por debajo.\n Se puede negociar precio."
-            app:layout_constraintStart_toStartOf="@+id/productScreenTitle"
-            app:layout_constraintTop_toBottomOf="@+id/productScreenTalla" />
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="@+id/productScreenTitle2"
+            app:layout_constraintTop_toBottomOf="@+id/productScreenTitle2" />
+
+        <TextView
+            android:id="@+id/productScreenPrecio2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Precio:"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/productScreenTitle" />
 
         <TextView
             android:id="@+id/productScreenPrecio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
+            android:layout_marginStart="5dp"
             android:text="Precio"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toEndOf="@+id/productScreenPrecio2"
+            app:layout_constraintTop_toTopOf="@+id/productScreenPrecio2" />
+
+        <TextView
+            android:id="@+id/productScreenTalla2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Talla: "
+            android:textColor="@color/black"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/productScreenTitle"
-            app:layout_constraintTop_toBottomOf="@+id/productScreenTitle" />
+            app:layout_constraintTop_toBottomOf="@+id/productScreenPrecio" />
 
         <TextView
             android:id="@+id/productScreenTalla"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
             android:text="Talla"
-            app:layout_constraintStart_toStartOf="@+id/productScreenTitle"
-            app:layout_constraintTop_toBottomOf="@+id/productScreenPrecio" />
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="@+id/productScreenPrecio"
+            app:layout_constraintTop_toTopOf="@+id/productScreenTalla2" />
+
+        <TextView
+            android:id="@+id/productScreenMarca2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Marca: "
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/productScreenTalla2" />
 
         <TextView
             android:id="@+id/productScreenMarca"
             android:layout_width="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:textColor="@color/black"
             android:layout_height="wrap_content"
             android:text="Marca"
-            app:layout_constraintStart_toEndOf="@+id/productScreenTalla"
-            app:layout_constraintTop_toTopOf="@+id/productScreenTalla" />
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="@+id/productScreenPrecio"
+            app:layout_constraintTop_toTopOf="@+id/productScreenMarca2" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/productScreenComprar"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Comprar"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            android:background="@drawable/button_bg"
             app:layout_constraintStart_toStartOf="parent" />
 
 

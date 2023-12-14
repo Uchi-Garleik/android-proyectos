@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.MainActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.RecyclerViewInterface;
 import com.example.myapplication.adapters.ProductsAdapter;
@@ -36,6 +37,8 @@ public class HomeActivity extends AppCompatActivity implements ContractListMyPro
     Button productsBtn;
     Button addProductMenuBtn;
     Button historicoComprasBtn;
+
+    private Button logoutButton;
 
     private RecyclerView recyclerView;
 
@@ -68,6 +71,17 @@ public class HomeActivity extends AppCompatActivity implements ContractListMyPro
         usuariosBtn = findViewById(R.id.usersMenuBtn);
         productsBtn = findViewById(R.id.categoryMenuBtn);
         addProductMenuBtn = findViewById(R.id.addProductMenuBtn);
+
+        logoutButton = findViewById(R.id.logoutButton);
+        logoutButton.setOnClickListener(v->{
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.remove("isLoggedIn");
+            editor.remove("username");
+            editor.remove("id");
+            editor.apply();
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        });
 
         historicoComprasBtn.setOnClickListener(v -> {
             Intent intent = new Intent(this, ListHistoricoComprasActivity.class);
@@ -125,10 +139,6 @@ public class HomeActivity extends AppCompatActivity implements ContractListMyPro
 
     @Override
     public void OnItemClick(int position) {
-        Intent intent = new Intent(this, BuyProductActivity.class);
-        intent.putExtra("nombre", productoArrayListRecycler.get(position).getNombre());
-        intent.putExtra("descripcion", productoArrayListRecycler.get(position).getNombre());
-        intent.putExtra("imagePath", productoArrayListRecycler.get(position).getImagePath());
-        startActivity(intent);
+
     }
 }

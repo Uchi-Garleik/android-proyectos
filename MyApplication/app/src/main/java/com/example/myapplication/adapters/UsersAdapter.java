@@ -15,8 +15,10 @@ import com.example.myapplication.R;
 import com.example.myapplication.RecyclerViewInterface;
 import com.example.myapplication.beans.Usuario;
 import com.google.android.material.imageview.ShapeableImageView;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UsuariosViewHolder> {
     public final RecyclerViewInterface recyclerViewInterface;
@@ -42,7 +44,9 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UsuariosView
         Usuario usuario = usuariosArrayList.get(position);
         Log.e("onBindViewHolder: ", "Usuario:" + usuario );
         holder.userHeading.setText(usuario.getUsername());
-        holder.userImage.setImageResource(usuario.getImage());
+        String uniqueID = UUID.randomUUID().toString();
+        Picasso.get().load("http://192.168.1.196:8080" + usuario.getImagePath() + "?" + uniqueID).into(holder.userImage);
+        Log.e("onBindViewHolder: ", "http://192.168.1.196:8080" + usuario.getImagePath() + "?" +uniqueID );
         holder.ratingBar.setRating((float) usuario.getRating());
     }
 

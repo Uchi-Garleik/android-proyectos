@@ -15,6 +15,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.MainActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.RecyclerViewInterface;
 import com.example.myapplication.adapters.ProductsAdapter;
@@ -46,6 +47,7 @@ public class ListCategoriedProductsActivity extends AppCompatActivity implements
     Button productsBtn;
     Button addProductMenuBtn;
     Button historicoComprasBtn;
+    private Button logoutButton;
     private ArrayList<String> categoryArray;
     private ArrayList<Producto> productoArrayList;
     private ListCategoriedProductsPresenter presenter = new ListCategoriedProductsPresenter(this);
@@ -107,7 +109,16 @@ public class ListCategoriedProductsActivity extends AppCompatActivity implements
         usuariosBtn = findViewById(R.id.usersMenuBtn);
         productsBtn = findViewById(R.id.categoryMenuBtn);
         addProductMenuBtn = findViewById(R.id.addProductMenuBtn);
-
+        logoutButton = findViewById(R.id.logoutButton);
+        logoutButton.setOnClickListener(v->{
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.remove("isLoggedIn");
+            editor.remove("username");
+            editor.remove("id");
+            editor.apply();
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        });
         homeBtn = findViewById(R.id.homeMenuBtn);
         homeBtn.setOnClickListener(v -> {
             Intent intent = new Intent(this, HomeActivity.class);

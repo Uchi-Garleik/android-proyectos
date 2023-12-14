@@ -76,7 +76,7 @@ public class BuyProductActivity extends AppCompatActivity implements ContractBuy
         descripcion.setText(getIntent().getStringExtra("descripcion"));
 
         precio = findViewById(R.id.productScreenPrecio);
-        precio.setText(String.valueOf(getIntent().getDoubleExtra("precio",0)));
+        precio.setText(String.valueOf(getIntent().getDoubleExtra("precio",0)) + "€");
 
         talla = findViewById(R.id.productScreenTalla);
         talla.setText(getIntent().getStringExtra("talla"));
@@ -88,7 +88,8 @@ public class BuyProductActivity extends AppCompatActivity implements ContractBuy
         estado.setText(getIntent().getStringExtra("estado"));
 
         productImage = findViewById(R.id.productScreenImage);
-        Picasso.get().load("http://192.168.104.75:8080"+getIntent().getStringExtra("imagePath")).into(productImage);
+//        Picasso.get().load("http://192.168.104.75:8080"+getIntent().getStringExtra("imagePath")).into(productImage);
+        Picasso.get().load("http://192.168.1.196:8080"+getIntent().getStringExtra("imagePath")).into(productImage);
 
 
         comprarButton = findViewById(R.id.productScreenComprar);

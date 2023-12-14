@@ -34,15 +34,20 @@
                 android:id="@+id/historicoTitulo"
                 android:layout_width="wrap_content"
                 style="@style/TextTitle"
+                android:textStyle="bold"
+                android:textColor="@color/black"
                 android:textSize="20sp"
+                android:maxLength="37"
                 android:layout_height="wrap_content"
                 android:text="Chaqueta verde turquesa con camisa amarilla"/>
             <TextView
+                android:textColor="@color/black"
                 android:id="@+id/historicoFecha"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="2023/01/12"/>
             <TextView
+                android:textColor="@color/black"
                 android:id="@+id/historicoPrecio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.MainActivity;
 import com.example.myapplication.addproducts.view.AddProductActivity;
 import com.example.myapplication.listcategoriedproducts.view.ListCategoriedProductsActivity;
 import com.example.myapplication.listhistoricocompras.view.ListHistoricoComprasActivity;
@@ -51,7 +52,7 @@ public class ListUsersActivity extends AppCompatActivity implements ContractList
     private float rating;
     private ShapeableImageView shapeableImageView;
     private ArrayList<Usuario> usuarioArrayListRecycler;
-
+    private Button logoutButton;
 
     private static ListUsersActivity getInstance(){
         if (listUsersActivity == null){
@@ -88,7 +89,16 @@ public class ListUsersActivity extends AppCompatActivity implements ContractList
         usuariosBtn = findViewById(R.id.usersMenuBtn);
         productsBtn = findViewById(R.id.categoryMenuBtn);
         addProductMenuBtn = findViewById(R.id.addProductMenuBtn);
-
+        logoutButton = findViewById(R.id.logoutButton);
+        logoutButton.setOnClickListener(v->{
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.remove("isLoggedIn");
+            editor.remove("username");
+            editor.remove("id");
+            editor.apply();
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        });
         historicoComprasBtn.setOnClickListener(v -> {
             Intent intent = new Intent(this, ListHistoricoComprasActivity.class);
             startActivity(intent);
@@ -197,7 +207,7 @@ public class ListUsersActivity extends AppCompatActivity implements ContractList
         Intent intent = new Intent(this, UserScreenActivity.class);
         intent.putExtra("id",usuarioArrayListRecycler.get(position).getId());
         intent.putExtra("username",usuarioArrayListRecycler.get(position).getUsername());
-        intent.putExtra("image",usuarioArrayListRecycler.get(position).getImage());
+        intent.putExtra("image",usuarioArrayListRecycler.get(position).getImagePath());
 //        Log.e("OnItemClick: ", "ARRAY:" + usuarioArrayListRecycler );
 //        Toast.makeText(listUsersActivity, "ID Usuario: " + usuarioArrayListRecycler.get(position).getId() + ", Username: " + usuarioArrayListRecycler.get(position).getUsername(), Toast.LENGTH_SHORT).show();
         startActivity(intent);

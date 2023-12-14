@@ -1,6 +1,7 @@
 package com.example.myapplication.listhistoricocompras.view;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.MainActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.RecyclerViewInterface;
 import com.example.myapplication.adapters.HistoricoComprasAdapter;
@@ -26,7 +28,7 @@ import com.example.myapplication.listrateusers.view.ListUsersActivity;
 import java.util.ArrayList;
 
 public class ListHistoricoComprasActivity extends AppCompatActivity implements ContractHistoricoCompras.View, RecyclerViewInterface {
-
+    SharedPreferences sharedPreferences;
     private HistoricoComprasAdapter historicoComprasAdapter;
     private RecyclerView recyclerView;
     private ArrayList<HistoricoCompra> historicoCompraArrayListRecycler;
@@ -38,6 +40,8 @@ public class ListHistoricoComprasActivity extends AppCompatActivity implements C
     Button productsBtn;
     Button addProductMenuBtn;
     Button historicoComprasBtn;
+    Button logoutButton;
+
     public static ListHistoricoComprasActivity getInstance(){
         if (listHistoricoComprasActivity == null){
             listHistoricoComprasActivity = new ListHistoricoComprasActivity();
@@ -54,13 +58,24 @@ public class ListHistoricoComprasActivity extends AppCompatActivity implements C
     }
 
     private void initComponents() {
-
         historicoComprasBtn = findViewById(R.id.basketMenuBtn);
         homeBtn = findViewById(R.id.homeMenuBtn);
         usuariosBtn = findViewById(R.id.usersMenuBtn);
         productsBtn = findViewById(R.id.categoryMenuBtn);
         addProductMenuBtn = findViewById(R.id.addProductMenuBtn);
         homeBtn = findViewById(R.id.homeMenuBtn);
+        sharedPreferences = getSharedPreferences("com.MyApp.USER_CFG", MODE_PRIVATE);
+        logoutButton = findViewById(R.id.logoutButton);
+        logoutButton.setOnClickListener(v->{
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.remove("isLoggedIn");
+            editor.remove("username");
+            editor.remove("id");
+            editor.apply();
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        });
+
         homeBtn.setOnClickListener(v -> {
             Intent intent = new Intent(this, HomeActivity.class);
             startActivity(intent);
@@ -98,12 +113,14 @@ public class ListHistoricoComprasActivity extends AppCompatActivity implements C
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         historicoComprasAdapter = new HistoricoComprasAdapter(this, historicoCompraArrayListRecycler, this);
+        Log.e("historicoCompras_V2: ", historicoCompraArrayList.toString() );
         recyclerView.setAdapter(historicoComprasAdapter);
         historicoComprasAdapter.notifyDataSetChanged();
     }
 
     private void dataInitialize(ArrayList<HistoricoCompra> historicoCompraArrayList) {
         historicoCompraArrayListRecycler = new ArrayList<>();
+        Log.e("historicoCompras: ", historicoCompraArrayList.toString() );
         historicoCompraArrayListRecycler.addAll(historicoCompraArrayList);
     }
 

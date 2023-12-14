@@ -1,6 +1,7 @@
 package com.example.myapplication.listhistoricocompras.presenter;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.example.myapplication.beans.HistoricoCompra;
 import com.example.myapplication.listhistoricocompras.ContractHistoricoCompras;
@@ -26,6 +27,7 @@ public class ListHistoricoComprasPresenter implements ContractHistoricoCompras.P
     @Override
     public void onFinished(ArrayList<HistoricoCompra> historicoCompraArrayList) {
         view.successListHistoricoCompras(historicoCompraArrayList);
+        Log.e("historicoCompras_V3: ", historicoCompraArrayList.toString() );
     }
 
     @Override

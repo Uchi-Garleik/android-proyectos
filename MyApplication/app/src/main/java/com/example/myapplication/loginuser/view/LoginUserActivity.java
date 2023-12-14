@@ -50,49 +50,28 @@ public class LoginUserActivity extends AppCompatActivity implements ContractLogi
     private void initComponents() {
         sharedPreferencesUserCFG = getSharedPreferences("com.MyApp.USER_CFG", Context.MODE_PRIVATE);
         buttonLogin = findViewById(R.id.signInBtn);
-//        buttonLogout = findViewById(R.id.logoutBtn);
-//        buttonListProducts = findViewById(R.id.listadoProductosBtn);
-//        buttonMostSells = findViewById(R.id.mostSellsBtn);
 
         username = findViewById(R.id.editTextUsername);
         password = findViewById(R.id.editTextPassword);
 
-//        buttonMostSells.setOnClickListener(v -> {
-//            Intent intent = new Intent(this, ListUsersActivity.class);
-//            startActivity(intent);
-//        });
-//
-//        buttonListProducts.setOnClickListener(view -> {
-//            if (!isLoggedIn()){
-//                Toast.makeText(this, "Please Log In", Toast.LENGTH_SHORT).show();
-//            }else{
-//                Intent intent = new Intent(this, ListMyProductsActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-//
-//        buttonLogout.setOnClickListener(view -> {
-//            SharedPreferences.Editor editor = sharedPreferencesUserCFG.edit();
-//            editor.remove("isLoggedIn");
-//            editor.remove("username");
-//            editor.remove("id");
-//            editor.apply();
-//        });
-
         buttonLogin.setOnClickListener(view -> {
-            if ( !isLoggedIn() ){
-                Usuario usuario = new Usuario();
-                usuario.setUsername(username.getText().toString());
-                usuario.setPassword(password.getText().toString());
-                presenter.loginUser(usuario);
-            }else{
-                String userData = "";
-                userData += "{Username: " + sharedPreferencesUserCFG.getString("username", "cuke") + "},";
-                userData += "Id: " + sharedPreferencesUserCFG.getInt("id",0) + "}";
-                Toast.makeText(this, userData, Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(LoginUserActivity.this, HomeActivity.class);
-                startActivity(intent);
-            }
+                if ( !isLoggedIn() ){
+                    if (username.getText().length() <= 0 || password.getText().length() <= 0){
+                        Toast.makeText(this, "Introduce un usuario y una contraseña", Toast.LENGTH_SHORT).show();
+                    }else{
+                        Usuario usuario = new Usuario();
+                        usuario.setUsername(username.getText().toString());
+                        usuario.setPassword(password.getText().toString());
+                        presenter.loginUser(usuario);
+                    }
+                }else{
+                    String userData = "";
+                    userData += "{Username: " + sharedPreferencesUserCFG.getString("username", "cuke") + "},";
+                    userData += "Id: " + sharedPreferencesUserCFG.getInt("id",0) + "}";
+                    Toast.makeText(this, userData, Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(LoginUserActivity.this, HomeActivity.class);
+                    startActivity(intent);
+                }
         });
     }
 
@@ -104,7 +83,7 @@ public class LoginUserActivity extends AppCompatActivity implements ContractLogi
         editor.putString("username", usuario.getUsername());
         editor.putInt("id", usuario.getId());
         editor.apply();
-        Intent intent = new Intent(LoginUserActivity.this, AddProductActivity.class);
+        Intent intent = new Intent(LoginUserActivity.this, HomeActivity.class);
         startActivity(intent);
     }
 

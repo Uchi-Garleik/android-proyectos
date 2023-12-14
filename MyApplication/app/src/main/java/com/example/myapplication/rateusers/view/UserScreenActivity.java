@@ -22,6 +22,10 @@ import com.example.myapplication.loginuser.presenter.LoginUserPresenter;
 import com.example.myapplication.loginuser.view.LoginUserActivity;
 import com.example.myapplication.rateusers.ContractRateUser;
 import com.example.myapplication.rateusers.presenter.RateUserPresenter;
+import com.google.android.material.imageview.ShapeableImageView;
+import com.squareup.picasso.Picasso;
+
+import java.util.UUID;
 
 public class UserScreenActivity extends AppCompatActivity implements ContractRateUser.View {
 
@@ -33,6 +37,9 @@ public class UserScreenActivity extends AppCompatActivity implements ContractRat
     TextView userTitle;
     Button saveRatingBtn;
     RatingBar userRatingStar;
+    private ShapeableImageView userImageView;
+
+    private String image;
 
     private RateUserPresenter presenter = new RateUserPresenter(this);
     private static UserScreenActivity userScreenActivity = null;
@@ -61,9 +68,14 @@ public class UserScreenActivity extends AppCompatActivity implements ContractRat
         SharedPreferences sharedPreferences = getSharedPreferences("com.MyApp.USER_CFG", MODE_PRIVATE);
         idUserScreenValue = getIntent().getIntExtra("id",0);
         userNameScreenValue = getIntent().getStringExtra("username");
+        userImageView = findViewById(R.id.userIconImage);
         userTitle = findViewById(R.id.userNameTitle);
         userRatingStar = findViewById(R.id.userRatingStar);
         saveRatingBtn = findViewById(R.id.saveRatingButton);
+        String uniqueID = UUID.randomUUID().toString();
+        Picasso.get().load("http://192.168.1.196:8080" + getIntent().getStringExtra("image") + "?" + uniqueID ).into(userImageView);
+        userTitle.setText(getIntent().getStringExtra("username"));
+
         saveRatingBtn.setOnClickListener(v -> {
             String zxy = "[ID USER:" + idUserScreenValue + "], [RATING:" + userRatingStar.getRating()+"], [MY USER ID:" + sharedPreferences.getInt("id",0) +"]";
             Toast.makeText(this, zxy, Toast.LENGTH_SHORT).show();

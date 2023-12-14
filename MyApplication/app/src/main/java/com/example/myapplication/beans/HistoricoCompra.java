@@ -2,13 +2,14 @@ package com.example.myapplication.beans;
 
 public class HistoricoCompra {
     private String nombreProducto;
-    private String nombreUsuario;
+    private String id;
     private String fechaCompra;
     private double precioCompra;
+    private String imagePath;
 
-    public HistoricoCompra(String nombreProducto, String nombreUsuario, String fechaCompra, int precioCompra) {
+    public HistoricoCompra(String nombreProducto, String id, String fechaCompra, int precioCompra) {
         this.nombreProducto = nombreProducto;
-        this.nombreUsuario = nombreUsuario;
+        this.id = id;
         this.fechaCompra = fechaCompra;
         this.precioCompra = precioCompra;
     }
@@ -17,13 +18,22 @@ public class HistoricoCompra {
 
     }
 
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+
     @Override
     public String toString() {
         return "HistoricoCompra{" +
                 "nombreProducto='" + nombreProducto + '\'' +
-                ", nombreUsuario='" + nombreUsuario + '\'' +
+                ", id='" + id + '\'' +
                 ", fechaCompra='" + fechaCompra + '\'' +
                 ", precioCompra=" + precioCompra +
+                ", imagePath='" + imagePath + '\'' +
                 '}';
     }
 
@@ -35,12 +45,12 @@ public class HistoricoCompra {
         this.nombreProducto = nombreProducto;
     }
 
-    public String getNombreUsuario() {
-        return nombreUsuario;
+    public String getId() {
+        return id;
     }
 
-    public void setNombreUsuario(String nombreUsuario) {
-        this.nombreUsuario = nombreUsuario;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getFechaCompra() {
